@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour {
 			for (int y = 0; y < this.gardenPlotGrid.GetHeight(); y++) {
 				GardenPlot newGardenPlot = Instantiate(gardenPlotPrefab, gardenTransform).GetComponent<GardenPlot>();
 				GardenPlotGridObject gardenPlotGridObject = this.gardenPlotGrid.GetGridObject(x, y);
-				newGardenPlot.SetGridObject(gardenPlotGridObject, this.gardenPlotGrid.GetWorldPosition(x, y, true));
+				newGardenPlot.SetGridObject(gardenPlotGridObject, this.gardenPlotGrid.GetWorldPosition(x, y));
 				gardenPlotGridObject.SetGardenPlot(newGardenPlot);
 			}
 		}
