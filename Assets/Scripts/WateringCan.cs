@@ -1,11 +1,8 @@
 using UnityEngine;
 
-public class WateringCan : MonoBehaviour {
+public class WateringCan : ButtonWithIndicator {
 
 	#region Inspector Assignments
-
-	[SerializeField]
-	private GameObject activeIndicatorObject;
 
 	#endregion
 	#region Variables
@@ -13,16 +10,29 @@ public class WateringCan : MonoBehaviour {
 	#endregion
 
 	#region Unity Methods
-	private void Update() {
-		activeIndicatorObject.SetActive(GameManager.instance.activeCurserMode == GameManager.CurserMode.Water);
+	protected override void Update() {
+		base.Update();
+
+		if (Input.GetMouseButtonDown(1) && this.WateringCanIsActive()) {
+			GameManager.instance.ClearCursorMode();
+		}
 	}
 	#endregion
 
 	public void HandleWaterCanButton() {
-		if (GameManager.instance.activeCurserMode == GameManager.CurserMode.Water) {
+		if (this.WateringCanIsActive()) {
 			GameManager.instance.ClearCursorMode();
 		} else {
 			GameManager.instance.SetCursorMode(GameManager.CurserMode.Water);
 		}
 	}
+
+	private bool WateringCanIsActive() {
+		return GameManager.instance.activeCurserMode == GameManager.CurserMode.Water;
+	}
+
+	protected override bool ActiveCondition() {
+		return this.WateringCanIsActive();
+	}
+
 }

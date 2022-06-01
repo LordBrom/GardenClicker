@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour {
 
 	#region Unity Methods
 	private void Start() {
-		this.gardenPlotGrid = new Grid<GardenPlotGridObject>(this.gardenPlotWidth, this.gardenPlotHeight, 10, Vector3.zero, (Grid<GardenPlotGridObject> g, int x, int y) => new GardenPlotGridObject(g, x, y), true);
+		this.gardenPlotGrid = new Grid<GardenPlotGridObject>(this.gardenPlotWidth, this.gardenPlotHeight, 10, Vector3.zero, (Grid<GardenPlotGridObject> g, int x, int y) => new GardenPlotGridObject(g, x, y));
 
 		for (int x = 0; x < this.gardenPlotGrid.GetWidth(); x++) {
 			for (int y = 0; y < this.gardenPlotGrid.GetHeight(); y++) {
@@ -70,16 +70,18 @@ public class GameManager : MonoBehaviour {
 				}
 			}
 		}
-		if (Input.GetMouseButtonDown(1)) {
-			ClearCursorMode();
-		}
 	}
 	#endregion
 
 	public void ClearCursorMode() {
 		this.activeCurserMode = CurserMode.None;
+		this.activeFlower = null;
 	}
 	public void SetCursorMode(CurserMode curserMode) {
 		this.activeCurserMode = curserMode;
+	}
+	public void SetCursorMode(Flower flower) {
+		this.activeCurserMode = CurserMode.Plant;
+		this.activeFlower = flower;
 	}
 }
