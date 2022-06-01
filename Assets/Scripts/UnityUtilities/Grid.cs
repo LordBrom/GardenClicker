@@ -12,6 +12,7 @@ namespace NateMills.UnityUtility {
 		protected Vector3 originPosition;
 		protected TGridObject[,] gridArray;
 		protected TextMesh[,] debugTextArray;
+		protected Vector3 cellOffset;
 
 		public bool showDebug = false;
 
@@ -27,6 +28,7 @@ namespace NateMills.UnityUtility {
 			this.width = width;
 			this.height = height;
 			this.cellSize = cellSize;
+			this.cellOffset = new Vector3(this.cellSize, this.cellSize) * 0.5f;
 			this.originPosition = originPosition;
 			this.showDebug = debug;
 
@@ -49,7 +51,7 @@ namespace NateMills.UnityUtility {
 					GameObject gameObject = new GameObject(x + "_" + y, typeof(TextMesh));
 					Transform transform = gameObject.transform;
 					transform.SetParent(debugContainer.transform);
-					transform.localPosition = GetWorldPosition(x, y) + new Vector3(this.cellSize, this.cellSize) * 0.5f;
+					transform.localPosition = GetWorldPosition(x, y, true);
 					TextMesh textMesh = gameObject.GetComponent<TextMesh>();
 					textMesh.text = gridArray[x, y]?.ToString();
 					textMesh.color = Color.white;
@@ -82,8 +84,8 @@ namespace NateMills.UnityUtility {
 		public Vector3 GetOriginPosition() {
 			return this.originPosition;
 		}
-		public Vector3 GetWorldPosition(int x, int y) {
-			return new Vector3(x, y) * this.cellSize + this.originPosition;
+		public Vector3 GetWorldPosition(int x, int y, bool includeCellOffset = false) {
+			return new Vector3(x, y) * this.cellSize + this.originPosition + (includeCellOffset ? this.cellOffset : Vector3.zero);
 		}
 
 		public void GetXY(Vector3 worldPosition, out int x, out int y) {

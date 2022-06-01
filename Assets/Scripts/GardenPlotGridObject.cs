@@ -20,4 +20,11 @@ public class GardenPlotGridObject : Grid<GardenPlotGridObject>.GridObject {
 	public void SetGardenPlot(GardenPlot gardenPlot) {
 		this.gardenPlot = gardenPlot;
 	}
+
+	public override string ToString() {
+		if (this.gardenPlot == null || this.gardenPlot.flower == null) {
+			return "n/a";
+		}
+		return this.gardenPlot.flowerGrowth.PercentComplete().ToString();
+	}
 }

@@ -29,8 +29,9 @@ namespace NateMills.UnityUtility {
 			if (this.currentCooldown <= 0) {
 				this.currentCooldown = 0;
 				this.isReady = true;
+				return true;
 			}
-			return this.isReady;
+			return false;
 		}
 
 		public void ClearCooldown() {
@@ -41,6 +42,13 @@ namespace NateMills.UnityUtility {
 		public void StartCooldown() {
 			this.isReady = false;
 			this.currentCooldown = this.cooldownTime;
+		}
+
+		public float PercentComplete(bool asDecimal = true) {
+			return ((this.cooldownTime - this.currentCooldown) / this.cooldownTime) * (asDecimal ? 1 : 100);
+		}
+		public float PercentRemaining(bool asDecimal = true) {
+			return (this.currentCooldown / this.cooldownTime) * (asDecimal ? 1 : 100);
 		}
 	}
 }
