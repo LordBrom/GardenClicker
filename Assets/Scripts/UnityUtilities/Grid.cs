@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
 
+namespace NateMills.UnityUtility {
 
-namespace NateMills.UnityUtils {
 	public class Grid<TGridObject> {
 		#region Variables
 
@@ -30,16 +30,14 @@ namespace NateMills.UnityUtils {
 			this.originPosition = originPosition;
 			this.showDebug = debug;
 
-			gridArray = new TGridObject[width, height];
-			for (int x = 0; x < gridArray.GetLength(0); x++) {
-				for (int y = 0; y < gridArray.GetLength(1); y++) {
-					gridArray[x, y] = createGridObject(this, x, y);
+			this.gridArray = new TGridObject[width, height];
+			for (int x = 0; x < this.gridArray.GetLength(0); x++) {
+				for (int y = 0; y < this.gridArray.GetLength(1); y++) {
+					this.gridArray[x, y] = createGridObject(this, x, y);
 				}
 			}
 
-			if (showDebug) {
-				this.DrawDebug();
-			}
+			if (showDebug) { this.DrawDebug(); }
 		}
 
 		private void DrawDebug() {
@@ -107,6 +105,11 @@ namespace NateMills.UnityUtils {
 			return OnGrid(x, y);
 		}
 
+		public TGridObject GetGridObject() {
+			GetXY(out int x, out int y);
+			return GetGridObject(x, y);
+		}
+
 		public TGridObject GetGridObject(int x, int y) {
 			if (OnGrid(x, y)) {
 				return gridArray[x, y];
@@ -169,4 +172,6 @@ namespace NateMills.UnityUtils {
 			}
 		}
 	}
+
+
 }
