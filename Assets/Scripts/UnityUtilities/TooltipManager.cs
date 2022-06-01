@@ -9,7 +9,7 @@ namespace NateMills.UnityUtility {
 
 		public static TooltipManager instance;
 
-		private void Awake() {
+		protected void Awake() {
 			if (instance != null) {
 				Destroy(gameObject);
 				return;
@@ -21,7 +21,7 @@ namespace NateMills.UnityUtility {
 		#region Inspector Assignments
 
 		[SerializeField]
-		private TextMeshProUGUI tooltipText;
+		protected TextMeshProUGUI tooltipText;
 
 		#endregion
 		#region Variables
@@ -44,29 +44,25 @@ namespace NateMills.UnityUtility {
 
 		#endregion
 
-		public void SetHoverTooltip(string tooltipText) {
+		public virtual void SetHoverTooltip(string tooltipText) {
 			this.tooltipText.text = tooltipText;
 			this.ShowTooltip();
 		}
-
 		public void ClearHoverTooltip() {
 			this.HideTooltip();
 		}
-
-
-		private void ShowTooltip() {
+		protected void ShowTooltip() {
 			this.canvasGroup.alpha = 1;
 		}
-
-		private void HideTooltip() {
+		protected void HideTooltip() {
 			this.canvasGroup.alpha = 0;
 		}
 
-		private void SetTooltipPosition() {
+		protected void SetTooltipPosition() {
 			this.SetPivot();
 			this.transform.position = Input.mousePosition;
 		}
-		private void SetPivot() {
+		protected void SetPivot() {
 			int pivotX = 0;
 			int pivotY = 0;
 
@@ -85,15 +81,23 @@ namespace NateMills.UnityUtility {
 
 		#region Inspector Assignments
 
-		protected string tooltipText;
+		public string tooltipText;
 
 		#endregion
 
-		public void OnPointerEnter(PointerEventData eventData) {
+		public virtual void OnPointerEnter(PointerEventData eventData) {
 			TooltipManager.instance.SetHoverTooltip(this.tooltipText);
 		}
 
-		public void OnPointerExit(PointerEventData eventData) {
+		public virtual void OnPointerExit(PointerEventData eventData) {
+			TooltipManager.instance.ClearHoverTooltip();
+		}
+
+		public void OnMouseOver() {
+			TooltipManager.instance.SetHoverTooltip(this.tooltipText);
+		}
+
+		public void OnMouseExit() {
 			TooltipManager.instance.ClearHoverTooltip();
 		}
 	}

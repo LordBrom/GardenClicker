@@ -1,7 +1,8 @@
 using UnityEngine;
 using NateMills.UnityUtility;
+using UnityEngine.EventSystems;
 
-public class GardenPlot : MonoBehaviour {
+public class GardenPlot : Tooltip {
 
 	#region Inspector Assignments
 
@@ -47,12 +48,15 @@ public class GardenPlot : MonoBehaviour {
 		}
 
 		if (this.flower != null) {
+			this.tooltipText = this.flower.name + " (" + Mathf.FloorToInt(this.flowerGrowth.PercentComplete(false)) + "%)";
 			this.flowerGrowth.TickCooldown(Time.deltaTime * (this.isWatered ? 2 : 1));
 			int flowerGrowthStage = Mathf.FloorToInt(this.flowerGrowth.PercentComplete() * (this.flower.growthSprites.Length - 1));
 			if (this.currentGrowthStage != flowerGrowthStage) {
 				this.flowerSpriteRenderer.sprite = this.flower.growthSprites[flowerGrowthStage];
 				this.currentGrowthStage = flowerGrowthStage;
 			}
+		} else {
+			this.tooltipText = "Nothing Planted";
 		}
 	}
 	#endregion
@@ -83,6 +87,9 @@ public class GardenPlot : MonoBehaviour {
 	}
 
 	public void HandleClick() {
+		if (this.flower == null) {
+			return;
+		}
 		this.flowerGrowth.TickCooldown(1);
 	}
 }
