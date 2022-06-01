@@ -10,6 +10,10 @@ public class WateringCan : ButtonWithIndicator {
 	#endregion
 
 	#region Unity Methods
+	protected void Start() {
+		this.tooltipText = "Watering Can";
+	}
+
 	protected override void Update() {
 		base.Update();
 	}

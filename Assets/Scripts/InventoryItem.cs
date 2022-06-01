@@ -23,7 +23,6 @@ public class InventoryItem : ButtonWithIndicator {
 
 	protected override void Update() {
 		base.Update();
-
 	}
 
 	#endregion
@@ -31,6 +30,7 @@ public class InventoryItem : ButtonWithIndicator {
 	public void SetFlower(Flower flower) {
 		this.flower = flower;
 		this.image.sprite = flower.seedSprite;
+		this.tooltipText = this.flower.name;
 	}
 
 	public void HandleInventoryItemButton() {

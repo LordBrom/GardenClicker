@@ -1,6 +1,7 @@
 using UnityEngine;
+using NateMills.UnityUtility;
 
-public class ButtonWithIndicator : MonoBehaviour {
+public class ButtonWithIndicator : Tooltip {
 
 	#region Inspector Assignments
 
