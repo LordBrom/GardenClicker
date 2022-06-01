@@ -12,10 +12,6 @@ public class WateringCan : ButtonWithIndicator {
 	#region Unity Methods
 	protected override void Update() {
 		base.Update();
-
-		if (Input.GetMouseButtonDown(1) && this.WateringCanIsActive()) {
-			GameManager.instance.ClearCursorMode();
-		}
 	}
 	#endregion
 

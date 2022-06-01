@@ -81,4 +81,8 @@ public class GardenPlot : MonoBehaviour {
 		this.wateredCooldown.StartCooldown();
 		this.spriteRenderer.sprite = this.wetDirtSprite;
 	}
+
+	public void HandleClick() {
+		this.flowerGrowth.TickCooldown(1);
+	}
 }

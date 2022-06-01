@@ -66,9 +66,13 @@ public class GameManager : MonoBehaviour {
 						clickedPlot.gardenPlot.SetFlower(this.activeFlower);
 						break;
 					default:
+						clickedPlot.gardenPlot.HandleClick();
 						break;
 				}
 			}
+		}
+		if (Input.GetMouseButtonDown(1) && this.activeCurserMode != CurserMode.None) {
+			this.ClearCursorMode();
 		}
 	}
 	#endregion
