@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Wheat
   m_EditorClassIdentifier: 
   name: Wheat
-  seedSprite: {fileID: 21300000, guid: bd7a58821f4b1c24e812a0c593c96c72, type: 3}
   growthSprites:
   - {fileID: 21300000, guid: c8582b9f962216247a93361197121b1d, type: 3}
   - {fileID: 21300000, guid: 74db69e099efdd14cbf10eb626923ef8, type: 3}
@@ -22,3 +21,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0b946d4d240bc8f479e10e6cd7c8f05f, type: 3}
   growTime: 30
   harvestReward: 15
+  harvestDrops:
+  - item: {fileID: 11400000, guid: e86b1ad627258e9408c02eea14c0b29e, type: 2}
+    dropChance: 100
+  - item: {fileID: 11400000, guid: e86b1ad627258e9408c02eea14c0b29e, type: 2}
+    dropChance: 100

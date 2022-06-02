@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class InventoryItem : ButtonWithIndicator {
@@ -6,7 +7,9 @@ public class InventoryItem : ButtonWithIndicator {
 	#region Inspector Assignments
 
 	[SerializeField]
-	private Flower flower;
+	private Seed seed;
+	[SerializeField]
+	private Item item;
 
 	#endregion
 	#region Variables
@@ -18,7 +21,7 @@ public class InventoryItem : ButtonWithIndicator {
 
 	private void Start() {
 		this.image = GetComponent<Image>();
-		SetFlower(this.flower);
+		SetItem(this.item);
 	}
 
 	protected override void Update() {
@@ -27,23 +30,28 @@ public class InventoryItem : ButtonWithIndicator {
 
 	#endregion
 
-	public void SetFlower(Flower flower) {
-		this.flower = flower;
-		this.image.sprite = flower.seedSprite;
-		this.tooltipText = this.flower.name;
+	public void SetItem(Item item) {
+		this.item = item;
+		this.image.sprite = item.image;
+		this.tooltipText = this.item.name;
 	}
 
 	public void HandleInventoryItemButton() {
-		if (this.flower != null) {
-			GameManager.instance.SetCursorMode(this.flower);
+		if (this.item != null) {
+			GameManager.instance.SetCursorMode((Seed)this.item);
 		}
 	}
 
 	private bool InventoryItemSelected() {
-		return GameManager.instance.activeCurserMode == GameManager.CurserMode.Plant && GameManager.instance.activeFlower == this.flower;
+		return GameManager.instance.activeCurserMode == GameManager.CurserMode.Seed && this.item.type == Item.Type.Seed && GameManager.instance.activeSeed == this.item;
 	}
 
 	protected override bool ActiveCondition() {
 		return this.InventoryItemSelected();
 	}
+
+	public override void ShowTooltip() {
+		TooltipManager.instance.SetItemTooltip(this.item.name, this.item.description);
+	}
+
 }

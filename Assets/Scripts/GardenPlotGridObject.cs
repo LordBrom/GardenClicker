@@ -15,6 +15,7 @@ public class GardenPlotGridObject : Grid<GardenPlotGridObject>.GridObject {
 
 	public GardenPlotGridObject(Grid<GardenPlotGridObject> grid, int x, int y) : base(grid, x, y) {
 		this.flowerType = "Weeds,\nGet better seeds!";
+
 	}
 
 	public void SetGardenPlot(GardenPlot gardenPlot) {

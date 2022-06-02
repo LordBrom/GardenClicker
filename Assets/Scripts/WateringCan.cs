@@ -8,8 +8,8 @@ public class WateringCan : ButtonWithIndicator {
 	#region Variables
 
 	#endregion
-
 	#region Unity Methods
+
 	protected void Start() {
 		this.tooltipText = "Watering Can";
 	}
@@ -17,6 +17,7 @@ public class WateringCan : ButtonWithIndicator {
 	protected override void Update() {
 		base.Update();
 	}
+
 	#endregion
 
 	public void HandleWaterCanButton() {

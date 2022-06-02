@@ -31,8 +31,8 @@ public class GardenPlot : Tooltip {
 	private int currentGrowthStage;
 
 	#endregion
-
 	#region Unity Methods
+
 	private void Start() {
 		this.spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -59,6 +59,7 @@ public class GardenPlot : Tooltip {
 			this.tooltipText = "Nothing Planted";
 		}
 	}
+
 	#endregion
 
 	public void SetGridObject(GardenPlotGridObject gridObject, Vector3 worldPosition) {

@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour {
 	#endregion
 	#region Inspector Assignments
 
-	public Flower activeFlower;
+	public Seed activeSeed;
 
 	[SerializeField]
 	private GameObject gardenPlotPrefab;
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour {
 	public enum CurserMode {
 		None,
 		Water,
-		Plant,
+		Seed,
 	}
 
 	public Resource goldResource;
@@ -67,8 +67,8 @@ public class GameManager : MonoBehaviour {
 					case CurserMode.Water:
 						clickedPlot.gardenPlot.WaterPlot();
 						break;
-					case CurserMode.Plant:
-						clickedPlot.gardenPlot.SetFlower(this.activeFlower);
+					case CurserMode.Seed:
+						clickedPlot.gardenPlot.SetFlower(this.activeSeed.flower);
 						break;
 					default:
 						clickedPlot.gardenPlot.HandleClick();
@@ -85,13 +85,13 @@ public class GameManager : MonoBehaviour {
 
 	public void ClearCursorMode() {
 		this.activeCurserMode = CurserMode.None;
-		this.activeFlower = null;
+		this.activeSeed = null;
 	}
 	public void SetCursorMode(CurserMode curserMode) {
 		this.activeCurserMode = curserMode;
 	}
-	public void SetCursorMode(Flower flower) {
-		this.activeCurserMode = CurserMode.Plant;
-		this.activeFlower = flower;
+	public void SetCursorMode(Seed seed) {
+		this.activeCurserMode = CurserMode.Seed;
+		this.activeSeed = seed;
 	}
 }
