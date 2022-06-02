@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour {
 		instance = this;
 	}
 	#endregion
-
 	#region Inspector Assignments
 
 	public Flower activeFlower;

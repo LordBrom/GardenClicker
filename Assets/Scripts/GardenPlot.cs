@@ -82,8 +82,7 @@ public class GardenPlot : Tooltip {
 	private void HarvestPlot() {
 		GameManager.instance.goldResource.GainResource(this.flower.harvestReward);
 
-		bool hasAutoReplant = true;
-		if (hasAutoReplant) {
+		if (UpgradeManager.instance.HasUpgrade("auto_replant")) {
 			this.currentGrowthStage = -1;
 			this.flowerGrowth = new Cooldown(this.flower.growTime);
 		} else {

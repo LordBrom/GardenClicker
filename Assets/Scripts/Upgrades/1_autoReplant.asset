@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca81bb99f026b884aa0167364e24507a, type: 3}
-  m_Name: 0_wateringCan
+  m_Name: 1_autoReplant
   m_EditorClassIdentifier: 
-  name: Watering Can
-  slug: water_can
-  id: 0
-  cost: 10
+  name: Auto Replant
+  slug: auto_replant
+  id: 1
+  cost: 50
