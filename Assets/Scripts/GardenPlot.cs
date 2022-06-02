@@ -67,14 +67,28 @@ public class GardenPlot : Tooltip {
 	}
 
 	public void SetFlower(Flower flower) {
-		this.flower = flower;
-		this.currentGrowthStage = -1;
-		this.flowerGrowth = new Cooldown(this.flower.growTime);
+		if (this.flower == null) {
+			this.flower = flower;
+			this.currentGrowthStage = -1;
+			this.flowerGrowth = new Cooldown(this.flower.growTime);
+		}
 	}
 
 	public void ClearFlower() {
 		this.flower = null;
 		this.flowerSpriteRenderer.sprite = null;
+	}
+
+	private void HarvestPlot() {
+		GameManager.instance.goldResource.GainResource(this.flower.harvestReward);
+
+		bool hasAutoReplant = true;
+		if (hasAutoReplant) {
+			this.currentGrowthStage = -1;
+			this.flowerGrowth = new Cooldown(this.flower.growTime);
+		} else {
+			this.ClearFlower();
+		}
 	}
 
 	public void WaterPlot() {
@@ -90,6 +104,8 @@ public class GardenPlot : Tooltip {
 		if (this.flower == null) {
 			return;
 		}
-		this.flowerGrowth.TickCooldown(1);
+		if (this.flowerGrowth.TickCooldown(1)) {
+			HarvestPlot();
+		}
 	}
 }

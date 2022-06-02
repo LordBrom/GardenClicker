@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 using NateMills.UnityUtility;
 
 public class GameManager : MonoBehaviour {
@@ -38,10 +39,15 @@ public class GameManager : MonoBehaviour {
 		Plant,
 	}
 
+	public Resource goldResource;
+	[SerializeField]
+	private TextMeshProUGUI goldText;
+
 	#endregion
 
 	#region Unity Methods
 	private void Start() {
+		this.goldResource = new Resource("Gold");
 		this.gardenPlotGrid = new Grid<GardenPlotGridObject>(this.gardenPlotWidth, this.gardenPlotHeight, 10, Vector3.zero, (Grid<GardenPlotGridObject> g, int x, int y) => new GardenPlotGridObject(g, x, y));
 
 		for (int x = 0; x < this.gardenPlotGrid.GetWidth(); x++) {
@@ -74,6 +80,7 @@ public class GameManager : MonoBehaviour {
 		if (Input.GetMouseButtonDown(1) && this.activeCurserMode != CurserMode.None) {
 			this.ClearCursorMode();
 		}
+		this.goldText.text = this.goldResource.amountHeld.ToString();
 	}
 	#endregion
 

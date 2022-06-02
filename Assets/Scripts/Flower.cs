@@ -10,5 +10,5 @@ public class Flower : ScriptableObject {
 
 	public float growTime;
 
-
+	public int harvestReward;
 }

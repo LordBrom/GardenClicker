@@ -21,3 +21,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e8ab28067cb0deb4ebbbfb5c98ec501e, type: 3}
   - {fileID: 21300000, guid: 0b946d4d240bc8f479e10e6cd7c8f05f, type: 3}
   growTime: 30
+  harvestReward: 15
