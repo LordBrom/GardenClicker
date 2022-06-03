@@ -36,4 +36,7 @@ public class WateringCan : ButtonWithIndicator {
 		return this.WateringCanIsActive();
 	}
 
+	public override void ShowTooltip() {
+		return;
+	}
 }

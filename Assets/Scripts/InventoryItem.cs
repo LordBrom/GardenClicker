@@ -26,8 +26,7 @@ public class InventoryItem : ButtonWithIndicator {
 
 	protected override void Update() {
 		base.Update();
-
-		itemCountText.text = this.itemCount.ToString();
+		this.SetItemCountText();
 	}
 
 	#endregion
@@ -59,6 +58,14 @@ public class InventoryItem : ButtonWithIndicator {
 		}
 	}
 
+	private void SetItemCountText() {
+		if (this.item == null) {
+			itemCountText.text = "";
+			return;
+		}
+		itemCountText.text = this.itemCount.ToString();
+	}
+
 	private bool InventoryItemSelected() {
 		if (this.item != null &&
 			GameManager.instance.activeCurserMode == GameManager.CurserMode.Seed &&
@@ -76,7 +83,7 @@ public class InventoryItem : ButtonWithIndicator {
 
 	public override void ShowTooltip() {
 		if (this.item != null) {
-			TooltipManager.instance.SetItemTooltip(this.item.name, this.item.description, this.item.sellValue);
+			TooltipManager.instance.SetItemTooltip(this.item);
 		}
 	}
 

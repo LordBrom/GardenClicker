@@ -113,4 +113,9 @@ public class GardenPlot : Tooltip {
 			HarvestPlot();
 		}
 	}
+
+
+	public override void ShowTooltip() {
+		TooltipManager.instance.SetGardenPlotTooltip(this);
+	}
 }

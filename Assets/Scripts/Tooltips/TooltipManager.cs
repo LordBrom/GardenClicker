@@ -20,11 +20,9 @@ public class TooltipManager : MonoBehaviour {
 	#region Inspector Assignments
 
 	[SerializeField]
-	private TextMeshProUGUI tooltipText;
+	private ItemTooltip itemTooltip;
 	[SerializeField]
-	private TextMeshProUGUI descriptionText;
-	[SerializeField]
-	private TextMeshProUGUI sellValueText;
+	private GardenPlotTooltip gardenPlotTooltip;
 
 	#endregion
 	#region Variables
@@ -74,22 +72,23 @@ public class TooltipManager : MonoBehaviour {
 	}
 
 	public void ClearHoverTooltip() {
+		this.itemTooltip.ClearTooltip();
+		this.gardenPlotTooltip.ClearTooltip();
 		this.HideTooltip();
 	}
 
 	#endregion
 
 	public void SetHoverTooltip(string tooltipText) {
-		this.tooltipText.text = tooltipText;
-		this.descriptionText.text = "";
-		this.sellValueText.text = "";
 		this.ShowTooltip();
 	}
 
-	public void SetItemTooltip(string itemName, string itemDescription, int sellValue) {
-		this.tooltipText.text = itemName;
-		this.descriptionText.text = itemDescription;
-		this.sellValueText.text = "$" + sellValue.ToString();
+	public void SetItemTooltip(Item item) {
+		this.itemTooltip.ShowTooltip(item);
+		this.ShowTooltip();
+	}
+	public void SetGardenPlotTooltip(GardenPlot gardenPlot) {
+		this.gardenPlotTooltip.ShowTooltip(gardenPlot);
 		this.ShowTooltip();
 	}
 }
