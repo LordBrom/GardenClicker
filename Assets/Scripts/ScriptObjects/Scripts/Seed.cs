@@ -7,7 +7,7 @@ public class Seed : Item {
 
 	public Flower flower;
 
-	public Seed() {
+	public Seed() : base() {
 		this.type = Item.Type.Seed;
 	}
 	#endregion

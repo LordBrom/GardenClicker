@@ -14,7 +14,7 @@ public class Item : ScriptableObject {
 	public new string name;
 	public string description;
 	public Sprite image;
-	public Type type;
+	public Type type = Type.Product;
 
 	public int sellValue;
 
@@ -24,8 +24,6 @@ public class Item : ScriptableObject {
 	}
 
 	public Item() {
-		this.type = Type.Product;
-
 		if (!Item.lookup.ContainsKey(this.id)) {
 			Item.lookup.Add(id, this);
 		} else {

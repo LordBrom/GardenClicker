@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour {
+public class InventoryManager : MonoBehaviour {
 
 	#region Singleton
-	public static Inventory instance;
+	public static InventoryManager instance;
 
 	private void Awake() {
 		if (instance != null) {
@@ -58,6 +58,9 @@ public class Inventory : MonoBehaviour {
 	}
 
 	public void LoadSaveString(string saveString) {
+		if (saveString == "") {
+			return;
+		}
 		this.BuildInventory();
 
 		string[] inventoryList = saveString.Split("|");

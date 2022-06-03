@@ -45,6 +45,11 @@ namespace NateMills.UnityUtility {
 			this.currentCooldown = this.cooldownTime;
 			this.tickMultiplier = 1;
 		}
+		public void StartCooldown(float presetAmount) {
+			this.isReady = false;
+			this.currentCooldown = presetAmount;
+			this.tickMultiplier = 1;
+		}
 
 		public float PercentComplete(bool asDecimal = true) {
 			return ((this.cooldownTime - this.currentCooldown) / this.cooldownTime) * (asDecimal ? 1 : 100);

@@ -43,7 +43,6 @@ public class UpgradeManager : MonoBehaviour {
 	public string GetSaveString() {
 		List<string> upgradeList = new List<string>();
 		foreach (string upgrade in UpgradeManager.instance.upgrades.Keys) {
-			Debug.Log(upgrade + ": " + UpgradeManager.instance.upgrades[upgrade].name + ": " + UpgradeManager.instance.upgrades[upgrade].purchased + ": " + UpgradeManager.instance.HasUpgrade(upgrade));
 			if (UpgradeManager.instance.upgrades[upgrade].purchased) {
 				upgradeList.Add(upgrade);
 			}
@@ -53,7 +52,6 @@ public class UpgradeManager : MonoBehaviour {
 
 	public void LoadSaveString(string saveString) {
 		this.LoadUpgrades();
-		Debug.Log(saveString);
 
 		if (saveString == "") {
 			return;
@@ -61,7 +59,6 @@ public class UpgradeManager : MonoBehaviour {
 
 		string[] upgradeList = saveString.Split("|");
 		foreach (string upgrade in upgradeList) {
-			Debug.Log(upgrade);
 			this.upgrades[upgrade].purchased = true;
 		}
 	}

@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2911a4af7a910fa41adcfabce89a20da, type: 3}
   m_Name: Grass Seed
   m_EditorClassIdentifier: 
-  id: 1
   name: Grass Seed
   description: A basic seed to grow some turf.
   image: {fileID: 21300000, guid: bd7a58821f4b1c24e812a0c593c96c72, type: 3}
-  type: 1
+  type: 0
   sellValue: 1
   flower: {fileID: 11400000, guid: 795397492a9986047856d35af453a37f, type: 2}
