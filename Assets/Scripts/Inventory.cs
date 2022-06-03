@@ -18,7 +18,7 @@ public class Inventory : MonoBehaviour {
 	[SerializeField]
 	private GameObject inventoryItemPrefab;
 	[SerializeField]
-	private Seed startSeed;
+	private Seed[] startSeeds;
 
 	private int inventorySize = 20;
 
@@ -32,8 +32,9 @@ public class Inventory : MonoBehaviour {
 
 	private void Start() {
 		this.BuildInventory();
-
-		this.AddToInventory(this.startSeed, 5);
+		foreach (Seed seed in this.startSeeds) {
+			this.AddToInventory(seed);
+		}
 
 	}
 

@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour {
 	#region Variables
 
 	private Grid<GardenPlotGridObject> gardenPlotGrid;
-	private int gardenPlotWidth = 3;
-	private int gardenPlotHeight = 2;
+	private int gardenPlotWidth = 1;
+	private int gardenPlotHeight = 1;
 	public CurserMode activeCurserMode { get; private set; }
 
 	public enum CurserMode {
@@ -68,14 +68,15 @@ public class GameManager : MonoBehaviour {
 						clickedPlot.gardenPlot.WaterPlot();
 						break;
 					case CurserMode.Seed:
-						if (Inventory.instance.RemoveFromInventory(this.activeSeed, 1)) {
-							clickedPlot.gardenPlot.SetFlower(this.activeSeed.flower);
-						}
+						clickedPlot.gardenPlot.PlantSeed(this.activeSeed);
 						break;
 					default:
 						clickedPlot.gardenPlot.HandleClick();
 						break;
 				}
+			}
+			if (!Input.GetKey(KeyCode.LeftShift)) {
+				this.ClearCursorMode();
 			}
 		}
 		if (Input.GetMouseButtonDown(1) && this.activeCurserMode != CurserMode.None) {

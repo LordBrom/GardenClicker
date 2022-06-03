@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Turf Roll
   description: A roll of grass.
-  image: {fileID: 0}
-  type: 0
+  image: {fileID: 21300000, guid: 5627ca13697715049b6865dfd84d0ccb, type: 3}
+  type: 1
   sellValue: 10

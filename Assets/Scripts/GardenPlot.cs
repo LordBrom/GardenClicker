@@ -67,9 +67,9 @@ public class GardenPlot : Tooltip {
 		this.transform.position = worldPosition;
 	}
 
-	public void SetFlower(Flower flower) {
-		if (this.flower == null) {
-			this.flower = flower;
+	public void PlantSeed(Seed seed) {
+		if (this.flower == null && Inventory.instance.RemoveFromInventory(seed, 1)) {
+			this.flower = seed.flower;
 			this.currentGrowthStage = -1;
 			this.flowerGrowth = new Cooldown(this.flower.growTime);
 		}
@@ -82,7 +82,6 @@ public class GardenPlot : Tooltip {
 
 	private void HarvestPlot() {
 		foreach (HarvestDrop harvestDrop in this.flower.harvestDrops) {
-			Debug.Log(harvestDrop.item.name);
 			if (Random.Range(0, 100) <= harvestDrop.dropChance) {
 				int dropCount = Random.Range(harvestDrop.dropCount.x, harvestDrop.dropCount.y);
 				Inventory.instance.AddToInventory(harvestDrop.item, dropCount);

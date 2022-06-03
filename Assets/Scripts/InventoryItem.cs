@@ -76,7 +76,7 @@ public class InventoryItem : ButtonWithIndicator {
 
 	public override void ShowTooltip() {
 		if (this.item != null) {
-			TooltipManager.instance.SetItemTooltip(this.item.name, this.item.description);
+			TooltipManager.instance.SetItemTooltip(this.item.name, this.item.description, this.item.sellValue);
 		}
 	}
 

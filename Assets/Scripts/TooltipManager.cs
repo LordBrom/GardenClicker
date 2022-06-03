@@ -23,6 +23,8 @@ public class TooltipManager : MonoBehaviour {
 	private TextMeshProUGUI tooltipText;
 	[SerializeField]
 	private TextMeshProUGUI descriptionText;
+	[SerializeField]
+	private TextMeshProUGUI sellValueText;
 
 	#endregion
 	#region Variables
@@ -80,12 +82,14 @@ public class TooltipManager : MonoBehaviour {
 	public void SetHoverTooltip(string tooltipText) {
 		this.tooltipText.text = tooltipText;
 		this.descriptionText.text = "";
+		this.sellValueText.text = "";
 		this.ShowTooltip();
 	}
 
-	public void SetItemTooltip(string itemName, string itemDescription) {
+	public void SetItemTooltip(string itemName, string itemDescription, int sellValue) {
 		this.tooltipText.text = itemName;
 		this.descriptionText.text = itemDescription;
+		this.sellValueText.text = "$" + sellValue.ToString();
 		this.ShowTooltip();
 	}
 }
