@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour {
@@ -32,9 +33,9 @@ public class Inventory : MonoBehaviour {
 
 	private void Start() {
 		this.BuildInventory();
-		foreach (Seed seed in this.startSeeds) {
-			this.AddToInventory(seed);
-		}
+		//foreach (Seed seed in this.startSeeds) {
+		//	this.AddToInventory(seed);
+		//}
 
 	}
 
@@ -43,8 +44,37 @@ public class Inventory : MonoBehaviour {
 	}
 
 	#endregion
+	#region Save/Load
+
+	public string GetSaveString() {
+		List<string> inventoryList = new List<string>();
+		for (int i = 0; i < this.inventory.Length; i++) {
+			if (this.inventory[i].item == null) {
+				continue;
+			}
+			inventoryList.Add(i + ":" + this.inventory[i].item.id + ":" + this.inventory[i].itemCount);
+		}
+		return string.Join('|', inventoryList);
+	}
+
+	public void LoadSaveString(string saveString) {
+		this.BuildInventory();
+
+		string[] inventoryList = saveString.Split("|");
+		foreach (string inventoryDetail in inventoryList) {
+			string[] inventoryDetailSplit = inventoryDetail.Split(':');
+			this.inventory[int.Parse(inventoryDetailSplit[0])].SetItem(Item.lookup[int.Parse(inventoryDetailSplit[1])], int.Parse(inventoryDetailSplit[2]));
+		}
+	}
+
+	#endregion
 
 	private void BuildInventory() {
+		if (this.inventory != null) {
+			foreach (InventoryItem inventoryItem in this.inventory) {
+				Destroy(inventoryItem.gameObject);
+			}
+		}
 		this.inventory = new InventoryItem[this.inventorySize];
 		for (int i = 0; i < this.inventorySize; i++) {
 			this.inventory[i] = Instantiate(this.inventoryItemPrefab, this.transform).GetComponent<InventoryItem>();

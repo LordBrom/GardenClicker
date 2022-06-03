@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour {
 				gardenPlotGridObject.SetGardenPlot(newGardenPlot);
 			}
 		}
+
+		SaveLoad.LoadState();
 	}
 
 	private void Update() {
@@ -97,5 +99,9 @@ public class GameManager : MonoBehaviour {
 	public void SetCursorMode(Seed seed) {
 		this.activeCurserMode = CurserMode.Seed;
 		this.activeSeed = seed;
+	}
+
+	public void SaveGame() {
+		SaveLoad.SaveState();
 	}
 }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2911a4af7a910fa41adcfabce89a20da, type: 3}
   m_Name: Wheat Seed
   m_EditorClassIdentifier: 
+  id: 2
   name: Wheat Seeds
   description: Seeds to grow some basic animal feed.
   image: {fileID: 21300000, guid: bd7a58821f4b1c24e812a0c593c96c72, type: 3}

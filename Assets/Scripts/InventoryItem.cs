@@ -38,12 +38,12 @@ public class InventoryItem : ButtonWithIndicator {
 		this.itemCount += count;
 	}
 
-	public void SetItem(Item item) {
+	public void SetItem(Item item, int count = 0) {
 		this.item = item;
 		this.itemImage.sprite = item.image;
 		this.itemImage.enabled = true;
 		this.tooltipText = this.item.name;
-		this.itemCount = 0;
+		this.itemCount = count;
 	}
 
 	public void ClearItem() {

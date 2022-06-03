@@ -29,12 +29,8 @@ public class UpgradeManager : MonoBehaviour {
 
 	private void Awake() {
 		this.CreateInstance();
+		this.LoadUpgrades();
 
-		this.upgrades = new Dictionary<string, UpgradePurchase>();
-
-		foreach (Upgrade upgrade in this.upgradesToLoad) {
-			this.upgrades.Add(upgrade.slug, new UpgradePurchase(upgrade));
-		}
 	}
 
 	private void Update() {
@@ -42,10 +38,49 @@ public class UpgradeManager : MonoBehaviour {
 	}
 
 	#endregion
+	#region Save/Load
+
+	public string GetSaveString() {
+		List<string> upgradeList = new List<string>();
+		foreach (string upgrade in UpgradeManager.instance.upgrades.Keys) {
+			Debug.Log(upgrade + ": " + UpgradeManager.instance.upgrades[upgrade].name + ": " + UpgradeManager.instance.upgrades[upgrade].purchased + ": " + UpgradeManager.instance.HasUpgrade(upgrade));
+			if (UpgradeManager.instance.upgrades[upgrade].purchased) {
+				upgradeList.Add(upgrade);
+			}
+		}
+		return string.Join('|', upgradeList);
+	}
+
+	public void LoadSaveString(string saveString) {
+		this.LoadUpgrades();
+		Debug.Log(saveString);
+
+		if (saveString == "") {
+			return;
+		}
+
+		string[] upgradeList = saveString.Split("|");
+		foreach (string upgrade in upgradeList) {
+			Debug.Log(upgrade);
+			this.upgrades[upgrade].purchased = true;
+		}
+	}
+
+	#endregion
+
+	private void LoadUpgrades() {
+		this.upgrades = new Dictionary<string, UpgradePurchase>();
+
+		foreach (Upgrade upgrade in this.upgradesToLoad) {
+			this.upgrades.Add(upgrade.slug, new UpgradePurchase(upgrade));
+		}
+	}
 
 	public bool HasUpgrade(string slug) {
 		return this.upgrades[slug].purchased;
 	}
+
+
 }
 
 public class UpgradePurchase {

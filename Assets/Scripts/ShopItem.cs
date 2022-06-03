@@ -6,8 +6,8 @@ public class ShopItem : MonoBehaviour {
 
 	#region Inspector Assignments
 
-	[SerializeField]
-	private Image itemImage;
+	//[SerializeField]
+	//private Image itemImage;
 	[SerializeField]
 	private TextMeshProUGUI itemName;
 	[SerializeField]
@@ -34,14 +34,14 @@ public class ShopItem : MonoBehaviour {
 
 	public void SetUpgradePurchase(UpgradePurchase upgradePurchase) {
 		this.upgradePurchase = upgradePurchase;
-		this.itemImage = null;
+		//this.itemImage = null;
 		this.itemName.text = upgradePurchase.name;
 		this.itemCost.text = upgradePurchase.cost.ToString();
 	}
 
 	public void PurchaseItem() {
 		if (GameManager.instance.goldResource.SpendResource(this.upgradePurchase.cost)) {
-			this.upgradePurchase.purchased = true;
+			UpgradeManager.instance.upgrades[this.upgradePurchase.slug].purchased = true;
 			Destroy(gameObject);
 		}
 	}
