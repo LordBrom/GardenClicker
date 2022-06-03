@@ -1,6 +1,8 @@
 using UnityEngine;
 
 namespace NateMills.UnityUtility {
+
+	[RequireComponent(typeof(CanvasGroup))]
 	public class HidableMenu : MonoBehaviour {
 
 		#region Inspector Assignments

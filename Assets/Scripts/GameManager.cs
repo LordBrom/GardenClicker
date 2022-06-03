@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour {
 	#region Unity Methods
 	private void Start() {
 		this.goldResource = new Resource("Gold");
+		this.goldResource.GainResource(100);
 		this.gardenPlotGrid = new Grid<GardenPlotGridObject>(this.gardenPlotWidth, this.gardenPlotHeight, 10, Vector3.zero, (Grid<GardenPlotGridObject> g, int x, int y) => new GardenPlotGridObject(g, x, y));
 
 		for (int x = 0; x < this.gardenPlotGrid.GetWidth(); x++) {

@@ -10,6 +10,10 @@ public class WateringCan : ButtonWithIndicator {
 	#endregion
 	#region Unity Methods
 
+	protected void Awake() {
+		GetComponent<Unlockable>().Condition = this.UnlockCondition;
+	}
+
 	protected void Start() {
 		this.tooltipText = "Watering Can";
 	}
@@ -37,6 +41,10 @@ public class WateringCan : ButtonWithIndicator {
 	}
 
 	public override void ShowTooltip() {
-		return;
+		TooltipManager.instance.SetToolTip("Watering makes plants grow faster");
+	}
+
+	private bool UnlockCondition() {
+		return UpgradeManager.instance.HasUpgrade("water_can");
 	}
 }

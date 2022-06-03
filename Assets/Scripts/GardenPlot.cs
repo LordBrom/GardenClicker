@@ -21,6 +21,7 @@ public class GardenPlot : Tooltip {
 	private GardenPlotGridObject gridObject;
 
 	public Flower flower { get; private set; }
+	private Seed seed;
 
 	private bool isWatered;
 	private Cooldown wateredCooldown;
@@ -70,6 +71,7 @@ public class GardenPlot : Tooltip {
 	public void PlantSeed(Seed seed) {
 		if (this.flower == null && Inventory.instance.RemoveFromInventory(seed, 1)) {
 			this.flower = seed.flower;
+			this.seed = seed;
 			this.currentGrowthStage = -1;
 			this.flowerGrowth = new Cooldown(this.flower.growTime);
 		}
@@ -88,7 +90,7 @@ public class GardenPlot : Tooltip {
 			}
 		}
 
-		if (UpgradeManager.instance.HasUpgrade("auto_replant")) {
+		if (UpgradeManager.instance.HasUpgrade("auto_replant") && Inventory.instance.RemoveFromInventory(this.seed, 1)) {
 			this.currentGrowthStage = -1;
 			this.flowerGrowth = new Cooldown(this.flower.growTime);
 		} else {

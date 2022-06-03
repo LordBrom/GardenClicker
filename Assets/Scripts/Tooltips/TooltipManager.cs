@@ -20,6 +20,8 @@ public class TooltipManager : MonoBehaviour {
 	#region Inspector Assignments
 
 	[SerializeField]
+	private BasicTooltip basicTooltip;
+	[SerializeField]
 	private ItemTooltip itemTooltip;
 	[SerializeField]
 	private GardenPlotTooltip gardenPlotTooltip;
@@ -72,6 +74,7 @@ public class TooltipManager : MonoBehaviour {
 	}
 
 	public void ClearHoverTooltip() {
+		this.basicTooltip.ClearTooltip();
 		this.itemTooltip.ClearTooltip();
 		this.gardenPlotTooltip.ClearTooltip();
 		this.HideTooltip();
@@ -80,6 +83,11 @@ public class TooltipManager : MonoBehaviour {
 	#endregion
 
 	public void SetHoverTooltip(string tooltipText) {
+		this.ShowTooltip();
+	}
+
+	public void SetToolTip(string tooltipText) {
+		this.basicTooltip.ShowTooltip(tooltipText);
 		this.ShowTooltip();
 	}
 
