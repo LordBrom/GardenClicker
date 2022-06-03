@@ -8,6 +8,10 @@ public class GardenPlotTooltip : HidableMenu {
 
 	[SerializeField]
 	private TextMeshProUGUI nameText;
+	[SerializeField]
+	private TextMeshProUGUI growthTimeText;
+	[SerializeField]
+	private TextMeshProUGUI wateredText;
 
 	#endregion
 	#region Variables
@@ -20,9 +24,12 @@ public class GardenPlotTooltip : HidableMenu {
 	public void ShowTooltip(GardenPlot gardenPlot) {
 		if (gardenPlot.flower == null) {
 			this.nameText.text = "Nothing Planted";
+			this.growthTimeText.text = "";
 		} else {
 			this.nameText.text = gardenPlot.flower.name;
+			this.growthTimeText.text = Formatter.TimeFormat(gardenPlot.flowerGrowth.GetRemainingTime());
 		}
+		this.wateredText.text = gardenPlot.isWatered ? "Yes" : "No";
 		this.ShowMenu();
 	}
 	public void ClearTooltip() {

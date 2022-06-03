@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour {
 		if (Input.GetMouseButtonDown(1) && this.activeCurserMode != CurserMode.None) {
 			this.ClearCursorMode();
 		}
-		this.goldText.text = this.goldResource.amountHeld.ToString();
+		this.goldText.text = Formatter.NumberFormat(this.goldResource.amountHeld);
 	}
 	#endregion
 

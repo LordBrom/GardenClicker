@@ -9,19 +9,19 @@ public class InventoryItem : ButtonWithIndicator {
 
 	[SerializeField]
 	private TextMeshProUGUI itemCountText;
+	[SerializeField]
+	private Image itemImage;
 
 	#endregion
 	#region Variables
 
 	public Item item { get; private set; }
 	public int itemCount;
-	private Image image;
 
 	#endregion
 	#region Unity Methods
 
 	private void Awake() {
-		this.image = GetComponent<Image>();
 	}
 
 	protected override void Update() {
@@ -40,14 +40,16 @@ public class InventoryItem : ButtonWithIndicator {
 
 	public void SetItem(Item item) {
 		this.item = item;
-		this.image.sprite = item.image;
+		this.itemImage.sprite = item.image;
+		this.itemImage.enabled = true;
 		this.tooltipText = this.item.name;
 		this.itemCount = 0;
 	}
 
 	public void ClearItem() {
 		this.item = null;
-		this.image.sprite = null;
+		this.itemImage.sprite = null;
+		this.itemImage.enabled = false;
 		this.tooltipText = "";
 		this.itemCount = 0;
 	}

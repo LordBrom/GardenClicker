@@ -24,7 +24,7 @@ public class ItemTooltip : HidableMenu {
 	public void ShowTooltip(Item item) {
 		this.nameText.text = item.name;
 		this.descriptionText.text = item.description;
-		this.sellValueText.text = item.sellValue.ToString();
+		this.sellValueText.text = Formatter.NumberFormat(item.sellValue);
 		this.ShowMenu();
 	}
 	public void ClearTooltip() {

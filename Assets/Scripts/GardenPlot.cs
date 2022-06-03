@@ -23,7 +23,7 @@ public class GardenPlot : Tooltip {
 	public Flower flower { get; private set; }
 	private Seed seed;
 
-	private bool isWatered;
+	public bool isWatered { get; private set; }
 	private Cooldown wateredCooldown;
 	[SerializeField]
 	private float waterDuration;
@@ -50,7 +50,8 @@ public class GardenPlot : Tooltip {
 
 		if (this.flower != null) {
 			this.tooltipText = this.flower.name + " (" + Mathf.FloorToInt(this.flowerGrowth.PercentComplete(false)) + "%)";
-			this.flowerGrowth.TickCooldown(Time.deltaTime * (this.isWatered ? 2 : 1));
+			this.flowerGrowth.tickMultiplier = this.isWatered ? 2 : 1;
+			this.flowerGrowth.TickCooldown(Time.deltaTime);
 			int flowerGrowthStage = Mathf.FloorToInt(this.flowerGrowth.PercentComplete() * (this.flower.growthSprites.Length - 1));
 			if (this.currentGrowthStage != flowerGrowthStage) {
 				this.flowerSpriteRenderer.sprite = this.flower.growthSprites[flowerGrowthStage];

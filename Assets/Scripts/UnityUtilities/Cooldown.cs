@@ -8,6 +8,7 @@ namespace NateMills.UnityUtility {
 		public bool isReady { get; private set; }
 		public float cooldownTime { get; private set; }
 		public float currentCooldown { get; private set; }
+		public float tickMultiplier = 1;
 
 		#endregion
 
@@ -25,7 +26,7 @@ namespace NateMills.UnityUtility {
 			if (this.currentCooldown <= 0) {
 				return true;
 			}
-			this.currentCooldown -= tickAmount;
+			this.currentCooldown -= tickAmount * this.tickMultiplier;
 			if (this.currentCooldown <= 0) {
 				this.currentCooldown = 0;
 				this.isReady = true;
@@ -42,6 +43,7 @@ namespace NateMills.UnityUtility {
 		public void StartCooldown() {
 			this.isReady = false;
 			this.currentCooldown = this.cooldownTime;
+			this.tickMultiplier = 1;
 		}
 
 		public float PercentComplete(bool asDecimal = true) {
@@ -49,6 +51,10 @@ namespace NateMills.UnityUtility {
 		}
 		public float PercentRemaining(bool asDecimal = true) {
 			return (this.currentCooldown / this.cooldownTime) * (asDecimal ? 1 : 100);
+		}
+
+		public float GetRemainingTime() {
+			return this.currentCooldown / this.tickMultiplier;
 		}
 	}
 }
