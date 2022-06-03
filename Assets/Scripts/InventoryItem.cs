@@ -1,18 +1,20 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class InventoryItem : ButtonWithIndicator {
 
 	#region Inspector Assignments
 
-	public Seed seedTest;
+	[SerializeField]
+	private TextMeshProUGUI itemCountText;
 
 	#endregion
 	#region Variables
 
 	public Item item { get; private set; }
-	public int itemCount { get; private set; }
+	public int itemCount;
 	private Image image;
 
 	#endregion
@@ -24,6 +26,8 @@ public class InventoryItem : ButtonWithIndicator {
 
 	protected override void Update() {
 		base.Update();
+
+		itemCountText.text = this.itemCount.ToString();
 	}
 
 	#endregion
@@ -32,13 +36,20 @@ public class InventoryItem : ButtonWithIndicator {
 		if (this.item == null) {
 			this.SetItem(item);
 		}
-		this.itemCount = count;
+		this.itemCount += count;
 	}
 
 	public void SetItem(Item item) {
 		this.item = item;
 		this.image.sprite = item.image;
 		this.tooltipText = this.item.name;
+		this.itemCount = 0;
+	}
+
+	public void ClearItem() {
+		this.item = null;
+		this.image.sprite = null;
+		this.tooltipText = "";
 		this.itemCount = 0;
 	}
 

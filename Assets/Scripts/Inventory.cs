@@ -68,4 +68,20 @@ public class Inventory : MonoBehaviour {
 		this.inventory[useSlot].AddItem(item, count);
 		return true;
 	}
+
+	public bool RemoveFromInventory(Item item, int count) {
+		for (int i = 0; i < this.inventory.Length; i++) {
+			if (this.inventory[i].item == item) {
+				if (this.inventory[i].itemCount >= count) {
+					this.inventory[i].itemCount -= count;
+					if (this.inventory[i].itemCount == 0) {
+						this.inventory[i].ClearItem();
+					}
+					return true;
+				}
+				return false;
+			}
+		}
+		return false;
+	}
 }

@@ -68,7 +68,9 @@ public class GameManager : MonoBehaviour {
 						clickedPlot.gardenPlot.WaterPlot();
 						break;
 					case CurserMode.Seed:
-						clickedPlot.gardenPlot.SetFlower(this.activeSeed.flower);
+						if (Inventory.instance.RemoveFromInventory(this.activeSeed, 1)) {
+							clickedPlot.gardenPlot.SetFlower(this.activeSeed.flower);
+						}
 						break;
 					default:
 						clickedPlot.gardenPlot.HandleClick();

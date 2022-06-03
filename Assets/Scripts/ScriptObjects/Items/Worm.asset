@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30a93f5442d6a144a9583980034bd60f, type: 3}
   m_Name: Worm
   m_EditorClassIdentifier: 
-  name: 
+  name: Worm
   description: A slimy squermy wormy
   image: {fileID: 0}
   type: 0

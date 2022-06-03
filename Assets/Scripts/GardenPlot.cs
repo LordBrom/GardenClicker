@@ -82,7 +82,8 @@ public class GardenPlot : Tooltip {
 
 	private void HarvestPlot() {
 		foreach (HarvestDrop harvestDrop in this.flower.harvestDrops) {
-			if (Random.Range(0, 100) >= harvestDrop.dropChance) {
+			Debug.Log(harvestDrop.item.name);
+			if (Random.Range(0, 100) <= harvestDrop.dropChance) {
 				int dropCount = Random.Range(harvestDrop.dropCount.x, harvestDrop.dropCount.y);
 				Inventory.instance.AddToInventory(harvestDrop.item, dropCount);
 			}
