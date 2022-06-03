@@ -5,12 +5,14 @@ public class InventoryMenu : HidableMenu {
 
 	#region Inspector Assignments
 
+
 	#endregion
 	#region Variables
 
-	#endregion
 
+	#endregion
 	#region Unity Methods
+
 	protected override void Start() {
 		base.Start();
 	}
@@ -18,5 +20,6 @@ public class InventoryMenu : HidableMenu {
 	private void Update() {
 
 	}
+
 	#endregion
 }

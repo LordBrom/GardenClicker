@@ -81,7 +81,12 @@ public class GardenPlot : Tooltip {
 	}
 
 	private void HarvestPlot() {
-		GameManager.instance.goldResource.GainResource(this.flower.harvestReward);
+		foreach (HarvestDrop harvestDrop in this.flower.harvestDrops) {
+			if (Random.Range(0, 100) >= harvestDrop.dropChance) {
+				int dropCount = Random.Range(harvestDrop.dropCount.x, harvestDrop.dropCount.y);
+				Inventory.instance.AddToInventory(harvestDrop.item, dropCount);
+			}
+		}
 
 		if (UpgradeManager.instance.HasUpgrade("auto_replant")) {
 			this.currentGrowthStage = -1;
