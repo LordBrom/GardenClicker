@@ -2145,6 +2145,12 @@ MonoBehaviour:
   activeSeed: {fileID: 0}
   gardenPlotPrefab: {fileID: 365404785817063621, guid: 0a5f5db5d21cc734dac95dadeda7a45c, type: 3}
   gardenTransform: {fileID: 406304636}
+  items:
+  - {fileID: 11400000, guid: e86b1ad627258e9408c02eea14c0b29e, type: 2}
+  - {fileID: 11400000, guid: 33a8ef228e483db4bb30bf55c4e2f3c0, type: 2}
+  - {fileID: 11400000, guid: 8d05f5148d42720438620b3a17716844, type: 2}
+  - {fileID: 11400000, guid: 6a7d4926833a1e246a8e127cdadb6af7, type: 2}
+  - {fileID: 11400000, guid: aa1fcdfab79fdbd40a1a04e8d18fb760, type: 2}
   goldText: {fileID: 724975384}
 --- !u!4 &1243547184
 Transform:

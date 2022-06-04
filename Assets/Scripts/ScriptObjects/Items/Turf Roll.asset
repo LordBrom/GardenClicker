@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30a93f5442d6a144a9583980034bd60f, type: 3}
   m_Name: Turf Roll
   m_EditorClassIdentifier: 
-  id: 4
   name: Turf Roll
+  slug: turf_roll
   description: A roll of grass.
   image: {fileID: 21300000, guid: 5627ca13697715049b6865dfd84d0ccb, type: 3}
   type: 1

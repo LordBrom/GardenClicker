@@ -39,4 +39,8 @@ public class Resource {
 	public void GainResource(int amountGained) {
 		this.amountHeld += amountGained;
 	}
+
+	public void SetResource(int amount) {
+		this.amountHeld = amount;
+	}
 }

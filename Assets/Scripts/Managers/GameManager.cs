@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using NateMills.UnityUtility;
@@ -7,7 +8,7 @@ public class GameManager : MonoBehaviour {
 	#region Singleton
 	public static GameManager instance;
 
-	private void Awake() {
+	private void createInstance() {
 		if (instance != null) {
 			Destroy(gameObject);
 			return;
@@ -23,6 +24,10 @@ public class GameManager : MonoBehaviour {
 	private GameObject gardenPlotPrefab;
 	[SerializeField]
 	private Transform gardenTransform;
+
+	[SerializeField]
+	private Item[] items;
+	public static Dictionary<string, Item> itemLookUp = new Dictionary<string, Item>();
 
 	#endregion
 	#region Variables
@@ -40,11 +45,16 @@ public class GameManager : MonoBehaviour {
 	private TextMeshProUGUI goldText;
 
 	#endregion
-
 	#region Unity Methods
+
+	private void Awake() {
+		this.createInstance();
+		this.BuildLookUps();
+	}
+
 	private void Start() {
 		this.goldResource = new Resource("Gold");
-		this.goldResource.GainResource(100);
+		//this.goldResource.GainResource(100);
 
 		SaveLoad.LoadState();
 	}
@@ -52,6 +62,7 @@ public class GameManager : MonoBehaviour {
 	private void Update() {
 		this.goldText.text = Formatter.NumberFormat(this.goldResource.amountHeld);
 	}
+
 	#endregion
 
 	public void ClearCursorMode() {
@@ -69,4 +80,14 @@ public class GameManager : MonoBehaviour {
 	public void SaveGame() {
 		SaveLoad.SaveState();
 	}
+
+	private void BuildLookUps() {
+		GameManager.itemLookUp = new Dictionary<string, Item>();
+		foreach (Item item in this.items) {
+			if (!GameManager.itemLookUp.ContainsKey(item.slug)) {
+				GameManager.itemLookUp.Add(item.slug, item);
+			}
+		}
+	}
+
 }

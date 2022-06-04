@@ -124,11 +124,11 @@ public class GardenPlot : Tooltip {
 		TooltipManager.instance.SetGardenPlotTooltip(this);
 	}
 
-	public void LoadPlot(int seedID, float growthAmount, float waterAmount) {
-		if (seedID != -1) {
-			Item seedItem = Item.lookup[seedID];
-			Seed seed = (Seed)seedItem;
+	public void LoadPlot(string seedSlug, float growthAmount, float waterAmount) {
+		if (seedSlug != "") {
+			Item seedItem = GameManager.itemLookUp[seedSlug];
 			if (seedItem.type == Item.Type.Seed) {
+				Seed seed = (Seed)seedItem;
 				this.flower = seed.flower;
 				this.seed = seed;
 				this.currentGrowthStage = -1;

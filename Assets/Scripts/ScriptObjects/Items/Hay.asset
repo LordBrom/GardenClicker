@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30a93f5442d6a144a9583980034bd60f, type: 3}
   m_Name: Hay
   m_EditorClassIdentifier: 
-  id: 3
   name: Hay
+  slug: hay
   description: Hay, it's for horses!
   image: {fileID: 21300000, guid: 97f11816a065cbf47a073a8728b100c7, type: 3}
   type: 1

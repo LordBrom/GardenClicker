@@ -9,18 +9,23 @@ public static class SaveLoad {
 		saveState.GardenPlotSaveState = GardenManager.instance.GetSaveString();
 		saveState.gold = GameManager.instance.goldResource.amountHeld;
 		PlayerPrefs.SetString("saveState", JsonUtility.ToJson(saveState));
-		Debug.Log(PlayerPrefs.GetString("saveState"));
 	}
 
-	public static void LoadState() {
-		if (!PlayerPrefs.HasKey("saveState")) {
-			return;
+	public static void LoadState(bool loadNewGame = false) {
+		SaveState saveState;
+		if (!loadNewGame && PlayerPrefs.HasKey("saveState")) {
+			saveState = JsonUtility.FromJson<SaveState>(PlayerPrefs.GetString("saveState"));
+		} else {
+			string startSeedID = GameManager.itemLookUp["grass_seed"].slug;
+			saveState = new SaveState();
+			saveState.GardenPlotSaveState = "1_1||";
+			saveState.InventorySaveState = "0:" + startSeedID + ":1";
 		}
-		SaveState saveState = JsonUtility.FromJson<SaveState>(PlayerPrefs.GetString("saveState"));
 
 		UpgradeManager.instance.LoadSaveString(saveState.UpgradeSaveState);
 		InventoryManager.instance.LoadSaveString(saveState.InventorySaveState);
 		GardenManager.instance.LoadSaveString(saveState.GardenPlotSaveState);
+		GameManager.instance.goldResource.SetResource(saveState.gold);
 	}
 
 }

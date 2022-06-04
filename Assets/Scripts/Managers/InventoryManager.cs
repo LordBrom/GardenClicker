@@ -52,7 +52,7 @@ public class InventoryManager : MonoBehaviour {
 			if (this.inventory[i].item == null) {
 				continue;
 			}
-			inventoryList.Add(i + ":" + this.inventory[i].item.id + ":" + this.inventory[i].itemCount);
+			inventoryList.Add(i + ":" + this.inventory[i].item.slug + ":" + this.inventory[i].itemCount);
 		}
 		return string.Join('|', inventoryList);
 	}
@@ -66,7 +66,7 @@ public class InventoryManager : MonoBehaviour {
 		string[] inventoryList = saveString.Split("|");
 		foreach (string inventoryDetail in inventoryList) {
 			string[] inventoryDetailSplit = inventoryDetail.Split(':');
-			this.inventory[int.Parse(inventoryDetailSplit[0])].SetItem(Item.lookup[int.Parse(inventoryDetailSplit[1])], int.Parse(inventoryDetailSplit[2]));
+			this.inventory[int.Parse(inventoryDetailSplit[0])].SetItem(GameManager.itemLookUp[inventoryDetailSplit[1]], int.Parse(inventoryDetailSplit[2]));
 		}
 	}
 

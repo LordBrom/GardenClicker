@@ -7,11 +7,12 @@ public class Item : ScriptableObject {
 
 	#region Variables
 
-	public static Dictionary<int, Item> lookup = new Dictionary<int, Item>();
+	//public static Dictionary<int, Item> lookup = new Dictionary<int, Item>();
 
 	[SerializeField]
-	public int id { get; private set; } = Item.lookup.Count + 1;
+	//public int id { get; private set; } = Item.lookup.Count + 1;
 	public new string name;
+	public string slug;
 	public string description;
 	public Sprite image;
 	public Type type = Type.Product;
@@ -23,13 +24,17 @@ public class Item : ScriptableObject {
 		Product
 	}
 
+	#endregion
+
 	public Item() {
-		if (!Item.lookup.ContainsKey(this.id)) {
-			Item.lookup.Add(id, this);
-		} else {
-			Item.lookup[id] = this;
-		}
 	}
 
-	#endregion
+	//public static Item LookUpItem(string slug) {
+	//	foreach (Item item in Item.lookup.Values) {
+	//		if (item.name == slug) {
+	//			return item;
+	//		}
+	//	}
+	//	return null;
+	//}
 }

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30a93f5442d6a144a9583980034bd60f, type: 3}
   m_Name: Worm
   m_EditorClassIdentifier: 
-  id: 5
   name: Worm
+  slug: worm
   description: A slimy squermy wormy
   image: {fileID: 21300000, guid: 87208e81058cdbb489b5323d8d72a77c, type: 3}
   type: 1

@@ -69,10 +69,10 @@ public class GardenManager : MonoBehaviour {
 		for (int x = 0; x < this.gardenPlotGrid.GetWidth(); x++) {
 			for (int y = 0; y < this.gardenPlotGrid.GetHeight(); y++) {
 				GardenPlot gardenPlot = this.gardenPlotGrid.GetGridObject(x, y).gardenPlot;
-				int seedID = gardenPlot.seed == null ? -1 : gardenPlot.seed.id;
+				string seedSlug = gardenPlot.seed == null ? "" : gardenPlot.seed.slug;
 				float growthAmount = gardenPlot.seed == null ? 0f : gardenPlot.flowerGrowth.currentCooldown;
 				float wateredAmount = gardenPlot.isWatered ? gardenPlot.wateredCooldown.currentCooldown : 0f;
-				gardenPlotList.Add(x + "_" + y + ":" + seedID + ":" + growthAmount + ":" + wateredAmount);
+				gardenPlotList.Add(x + "_" + y + ":" + seedSlug + ":" + growthAmount + ":" + wateredAmount);
 			}
 		}
 		return string.Join('|', gardenPlotList);
@@ -82,17 +82,19 @@ public class GardenManager : MonoBehaviour {
 		if (saveString == "") {
 			return;
 		}
-		Debug.Log(saveString);
 		string[] firstSplit = saveString.Split("||");
 		string[] widthHeight = firstSplit[0].Split("_");
 		this.BuildGardenPlots(int.Parse(widthHeight[0]), int.Parse(widthHeight[1]));
 
+		if (firstSplit[1] == "") {
+			return;
+		}
 		string[] gardenPlotList = firstSplit[1].Split("|");
 		foreach (string gardenPlotData in gardenPlotList) {
 			string[] gardenPlotDetailSplit = gardenPlotData.Split(':');
 			string[] coords = gardenPlotDetailSplit[0].Split("_");
 			GardenPlot gardenPlot = this.gardenPlotGrid.GetGridObject(int.Parse(coords[0]), int.Parse(coords[1])).gardenPlot;
-			gardenPlot.LoadPlot(int.Parse(gardenPlotDetailSplit[1]), float.Parse(gardenPlotDetailSplit[2]), float.Parse(gardenPlotDetailSplit[3]));
+			gardenPlot.LoadPlot(gardenPlotDetailSplit[1], float.Parse(gardenPlotDetailSplit[2]), float.Parse(gardenPlotDetailSplit[3]));
 		}
 	}
 
