@@ -33,9 +33,9 @@ public class InventoryManager : MonoBehaviour {
 
 	private void Start() {
 		this.BuildInventory();
-		//foreach (Seed seed in this.startSeeds) {
-		//	this.AddToInventory(seed);
-		//}
+		foreach (Seed seed in this.startSeeds) {
+			this.AddToInventory(seed);
+		}
 
 	}
 
@@ -117,5 +117,11 @@ public class InventoryManager : MonoBehaviour {
 			}
 		}
 		return false;
+	}
+
+	public void SellItem(Item item, int count = 1) {
+		if (RemoveFromInventory(item, count)) {
+			GameManager.instance.goldResource.GainResource(item.sellValue * count);
+		}
 	}
 }

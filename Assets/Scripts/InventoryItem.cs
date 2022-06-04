@@ -27,6 +27,10 @@ public class InventoryItem : ButtonWithIndicator {
 	protected override void Update() {
 		base.Update();
 		this.SetItemCountText();
+
+		if (this.isHovering && Input.GetMouseButtonUp(1)) {
+			InventoryManager.instance.SellItem(this.item, Input.GetKey(KeyCode.LeftControl) ? this.itemCount : 1);
+		}
 	}
 
 	#endregion

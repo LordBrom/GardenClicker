@@ -31,7 +31,7 @@ public class GardenManager : MonoBehaviour {
 	#region Unity Methods
 
 	private void Start() {
-		this.BuildGardenPlots(1, 1);
+		this.BuildGardenPlots(2, 2);
 	}
 
 	private void Update() {

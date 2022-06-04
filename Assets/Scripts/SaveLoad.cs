@@ -9,6 +9,7 @@ public static class SaveLoad {
 		saveState.GardenPlotSaveState = GardenManager.instance.GetSaveString();
 		saveState.gold = GameManager.instance.goldResource.amountHeld;
 		PlayerPrefs.SetString("saveState", JsonUtility.ToJson(saveState));
+		Debug.Log("Game Saved");
 	}
 
 	public static void LoadState(bool loadNewGame = false) {

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using NateMills.UnityUtility;
 
 public class GameManager : MonoBehaviour {
 
@@ -44,6 +43,7 @@ public class GameManager : MonoBehaviour {
 	[SerializeField]
 	private TextMeshProUGUI goldText;
 
+
 	#endregion
 	#region Unity Methods
 
@@ -54,8 +54,6 @@ public class GameManager : MonoBehaviour {
 
 	private void Start() {
 		this.goldResource = new Resource("Gold");
-		//this.goldResource.GainResource(100);
-
 		SaveLoad.LoadState();
 	}
 
@@ -75,10 +73,6 @@ public class GameManager : MonoBehaviour {
 	public void SetCursorMode(Seed seed) {
 		this.activeCurserMode = CurserMode.Seed;
 		this.activeSeed = seed;
-	}
-
-	public void SaveGame() {
-		SaveLoad.SaveState();
 	}
 
 	private void BuildLookUps() {

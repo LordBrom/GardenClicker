@@ -109,19 +109,25 @@ public class Tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler 
 
 	#endregion
 
+	public bool isHovering { get; private set; }
+
 	public void OnPointerEnter(PointerEventData eventData) {
+		this.isHovering = true;
 		this.ShowTooltip();
 	}
 
 	public void OnPointerExit(PointerEventData eventData) {
+		this.isHovering = false;
 		this.HideTooltip();
 	}
 
 	public void OnMouseOver() {
+		this.isHovering = true;
 		this.ShowTooltip();
 	}
 
 	public void OnMouseExit() {
+		this.isHovering = false;
 		this.HideTooltip();
 	}
 
