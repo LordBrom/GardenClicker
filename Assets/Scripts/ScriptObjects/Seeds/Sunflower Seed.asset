@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2911a4af7a910fa41adcfabce89a20da, type: 3}
-  m_Name: Strawberry Seed
+  m_Name: Sunflower Seed
   m_EditorClassIdentifier: 
-  name: Strawberry Seed
-  slug: strawberry_seed
-  description: Grows greaty sought red fruit. Can be harvested multiple times.
-  image: {fileID: 21300000, guid: 83102c97db2df784bb0be2f05cad9793, type: 3}
+  name: Sunflower Seed
+  slug: sunflower_seed
+  description: High demand by baseball players.
+  image: {fileID: 21300000, guid: 0e3488b40db5bea49aa781aee1303531, type: 3}
   type: 0
-  sellValue: 10
-  flower: {fileID: 11400000, guid: a0e9885aca3b3974790a41bb485f265a, type: 2}
+  sellValue: 100
+  flower: {fileID: 11400000, guid: ac8e7bb4dfb05d5419d4ea25686b88b3, type: 2}

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf86618ed10f03743b451144cb4fdacf, type: 3}
-  m_Name: StrawBerry
+  m_Name: Strawberry
   m_EditorClassIdentifier: 
-  name: StrawBerry
+  name: Strawberry
   growthSprites:
   - {fileID: 21300000, guid: 51cf2736751ba6f46a809bfa54723771, type: 3}
   - {fileID: 21300000, guid: 96b9216eb10b28e4bb21b819edd1cb09, type: 3}
@@ -20,7 +20,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ba80992dff2b4eb45bf23af7eaf27d60, type: 3}
   - {fileID: 21300000, guid: 6aa1ef49473a0f744a60131eeadbb641, type: 3}
   - {fileID: 21300000, guid: 95fbcd3b5f716d44e9d899756a8df703, type: 3}
-  growTime: 60
+  growTime: 120
   harvestDrops:
   - item: {fileID: 11400000, guid: 4f440e030e4c76b4e9e6831755a9931b, type: 2}
     dropChance: 100
