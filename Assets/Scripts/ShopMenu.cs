@@ -62,6 +62,14 @@ public class ShopMenu : HidableMenu {
 				this.renderedShopItems.Add(newShopItem);
 			}
 		}
+
+		foreach (Item item in GameManager.itemLookUp.Values) {
+			if (item.type == Item.Type.Seed) {
+				GameObject newShopItem = Instantiate(this.shopItemPrefab, this.shopContainerTransform);
+				newShopItem.GetComponent<ShopItem>().SetItem(item);
+				this.renderedShopItems.Add(newShopItem);
+			}
+		}
 	}
 
 	public override void ShowMenu() {

@@ -115,11 +115,14 @@ public class GardenPlot : Tooltip {
 	}
 
 	public void WaterPlot() {
-		if (this.isWatered) {
-			return;
-		}
 		this.isWatered = true;
-		this.wateredCooldown.StartCooldown(this.waterDuration * (UpgradeManager.instance.HasUpgrade("spungy_dirt_1") ? 2 : 1));
+		float multi = 1f;
+		if (UpgradeManager.instance.HasUpgrade("spungy_dirt_2")) {
+			multi = 2.5f;
+		} else if (UpgradeManager.instance.HasUpgrade("spungy_dirt_1")) {
+			multi = 2f;
+		}
+		this.wateredCooldown.StartCooldown(this.waterDuration * multi);
 		this.spriteRenderer.sprite = this.wetDirtSprite;
 	}
 
