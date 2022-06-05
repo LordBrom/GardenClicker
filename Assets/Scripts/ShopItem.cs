@@ -62,7 +62,8 @@ public class ShopItem : MonoBehaviour {
 				default:
 					break;
 			}
-			Destroy(this.gameObject);
+			ShopMenu.instance.PopulateShopItems();
+			//Destroy(this.gameObject);
 		}
 	}
 }

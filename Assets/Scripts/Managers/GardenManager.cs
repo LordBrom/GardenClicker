@@ -30,7 +30,7 @@ public class GardenManager : MonoBehaviour {
 	public bool sprinklerActive;
 	public bool autoHarvestActive;
 
-	private Cooldown sprinklerCooldown;
+	public Cooldown sprinklerCooldown { get; private set; }
 	private Cooldown autoHarvestCooldown;
 
 	private float sprinklerCooldownTime = 10 * 60;

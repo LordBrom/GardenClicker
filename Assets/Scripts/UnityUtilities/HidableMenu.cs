@@ -33,21 +33,21 @@ namespace NateMills.UnityUtility {
 
 		#endregion
 
-		public void ShowMenu() {
+		public virtual void ShowMenu() {
 			this.isShown = true;
 			this.canvasGroup.alpha = 1;
 			this.canvasGroup.interactable = true;
 			this.canvasGroup.blocksRaycasts = true;
 		}
 
-		public void HideMenu() {
+		public virtual void HideMenu() {
 			this.isShown = false;
 			this.canvasGroup.alpha = 0;
 			this.canvasGroup.interactable = false;
 			this.canvasGroup.blocksRaycasts = false;
 		}
 
-		public void ToggleMenu() {
+		public virtual void ToggleMenu() {
 			if (this.isShown) {
 				this.HideMenu();
 			} else {

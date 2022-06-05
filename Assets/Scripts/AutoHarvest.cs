@@ -17,7 +17,7 @@ public class AutoHarvest : ButtonWithIndicator {
 	protected override void Update() {
 		base.Update();
 		if (this.isHovering) {
-			TooltipManager.instance.SetToolTip("AutoHarvest.");
+			TooltipManager.instance.SetToolTip("Auto Harvest: " + (!this.ActiveCondition() ? "On" : "Off"));
 		}
 	}
 

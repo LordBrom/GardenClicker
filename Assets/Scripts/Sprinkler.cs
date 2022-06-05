@@ -17,7 +17,7 @@ public class Sprinkler : ButtonWithIndicator {
 	protected override void Update() {
 		base.Update();
 		if (this.isHovering) {
-			TooltipManager.instance.SetToolTip("Sprinkler.");
+			TooltipManager.instance.SetToolTip("Sprinklers: " + (!this.ActiveCondition() ? "On" : "Off") + "\nnext sprinkle: " + Formatter.TimeFormat(GardenManager.instance.sprinklerCooldown.currentCooldown));
 		}
 	}
 
