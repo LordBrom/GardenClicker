@@ -28,6 +28,10 @@ public class GameManager : MonoBehaviour {
 	private Item[] items;
 	public static Dictionary<string, Item> itemLookUp = new Dictionary<string, Item>();
 
+	[SerializeField]
+	private Upgrade[] upgrades;
+	public static Dictionary<string, Upgrade> upgradeLookUp = new Dictionary<string, Upgrade>();
+
 	#endregion
 	#region Variables
 
@@ -55,6 +59,7 @@ public class GameManager : MonoBehaviour {
 	private void Start() {
 		this.goldResource = new Resource("Gold");
 		SaveLoad.LoadState();
+		this.goldResource.GainResource(100);
 	}
 
 	private void Update() {
@@ -80,6 +85,13 @@ public class GameManager : MonoBehaviour {
 		foreach (Item item in this.items) {
 			if (!GameManager.itemLookUp.ContainsKey(item.slug)) {
 				GameManager.itemLookUp.Add(item.slug, item);
+			}
+		}
+
+		GameManager.upgradeLookUp = new Dictionary<string, Upgrade>();
+		foreach (Upgrade upgrade in this.upgrades) {
+			if (!GameManager.upgradeLookUp.ContainsKey(upgrade.slug)) {
+				GameManager.upgradeLookUp.Add(upgrade.slug, upgrade);
 			}
 		}
 	}

@@ -27,15 +27,24 @@ public class GardenManager : MonoBehaviour {
 	private int gardenPlotWidth = 1;
 	private int gardenPlotHeight = 1;
 
+	public bool sprinklerActive;
+	public bool autoHarvestActive;
+
+	private Cooldown sprinklerCooldown;
+	private Cooldown autoHarvestCooldown;
+
+	private float sprinklerCooldownTime = 10 * 60;
+
 	#endregion
 	#region Unity Methods
 
 	private void Start() {
 		this.BuildGardenPlots(2, 2);
+
+		this.sprinklerCooldown = new Cooldown(this.sprinklerCooldownTime, true);
 	}
 
 	private void Update() {
-
 		if (Input.GetMouseButtonDown(0)) {
 			GardenPlotGridObject clickedPlot = this.gardenPlotGrid.GetGridObject();
 			if (clickedPlot != null) {
@@ -57,6 +66,24 @@ public class GardenManager : MonoBehaviour {
 		}
 		if (Input.GetMouseButtonDown(1) && GameManager.instance.activeCurserMode != GameManager.CurserMode.None) {
 			GameManager.instance.ClearCursorMode();
+		}
+
+		if (UpgradeManager.instance.HasUpgrade("sprinkler") && this.sprinklerCooldown.TickCooldown(Time.deltaTime) && this.sprinklerActive) {
+
+			for (int x = 0; x < this.gardenPlotGrid.GetWidth(); x++) {
+				for (int y = 0; y < this.gardenPlotGrid.GetHeight(); y++) {
+					this.gardenPlotGrid.GetGridObject(x, y).gardenPlot.WaterPlot();
+				}
+			}
+
+			float newCooldown = this.sprinklerCooldownTime;
+			if (UpgradeManager.instance.HasUpgrade("fast_sprinkler_1")) {
+				newCooldown /= 2;
+			}
+			if (UpgradeManager.instance.HasUpgrade("fast_sprinkler_2")) {
+				newCooldown /= 2;
+			}
+			this.sprinklerCooldown.StartCooldown(newCooldown);
 		}
 	}
 
@@ -122,5 +149,11 @@ public class GardenManager : MonoBehaviour {
 				gardenPlotGridObject.SetGardenPlot(newGardenPlot);
 			}
 		}
+	}
+
+	public void UpgradeGardePlotSize(int width, int height) {
+		string saveString = this.GetSaveString();
+		saveString = width + "_" + height + "||" + saveString.Split("||")[1];
+		this.LoadSaveString(saveString);
 	}
 }

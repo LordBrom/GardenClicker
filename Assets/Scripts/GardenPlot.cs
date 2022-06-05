@@ -53,11 +53,14 @@ public class GardenPlot : Tooltip {
 		if (this.flower != null) {
 			this.tooltipText = this.flower.name + " (" + Mathf.FloorToInt(this.flowerGrowth.PercentComplete(false)) + "%)";
 			this.flowerGrowth.tickMultiplier = this.isWatered ? 2 : 1;
-			this.flowerGrowth.TickCooldown(Time.deltaTime);
-			int flowerGrowthStage = Mathf.FloorToInt(this.flowerGrowth.PercentComplete() * (this.flower.growthSprites.Length - 1));
-			if (this.currentGrowthStage != flowerGrowthStage) {
-				this.flowerSpriteRenderer.sprite = this.flower.growthSprites[flowerGrowthStage];
-				this.currentGrowthStage = flowerGrowthStage;
+			if (this.flowerGrowth.TickCooldown(Time.deltaTime) && GardenManager.instance.autoHarvestActive) {
+				this.HarvestPlot();
+			} else {
+				int flowerGrowthStage = Mathf.FloorToInt(this.flowerGrowth.PercentComplete() * (this.flower.growthSprites.Length - 1));
+				if (this.currentGrowthStage != flowerGrowthStage) {
+					this.flowerSpriteRenderer.sprite = this.flower.growthSprites[flowerGrowthStage];
+					this.currentGrowthStage = flowerGrowthStage;
+				}
 			}
 		} else {
 			this.tooltipText = "Nothing Planted";

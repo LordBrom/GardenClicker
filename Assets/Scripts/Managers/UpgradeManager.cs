@@ -16,9 +16,6 @@ public class UpgradeManager : MonoBehaviour {
 	#endregion
 	#region Inspector Assignments
 
-	[SerializeField]
-	private Upgrade[] upgradesToLoad;
-
 	#endregion
 	#region Variables
 
@@ -68,12 +65,16 @@ public class UpgradeManager : MonoBehaviour {
 	private void LoadUpgrades() {
 		this.upgrades = new Dictionary<string, UpgradePurchase>();
 
-		foreach (Upgrade upgrade in this.upgradesToLoad) {
+		foreach (Upgrade upgrade in GameManager.upgradeLookUp.Values) {
 			this.upgrades.Add(upgrade.slug, new UpgradePurchase(upgrade));
 		}
 	}
 
 	public bool HasUpgrade(string slug) {
+		if (!this.upgrades.ContainsKey(slug)) {
+			Debug.LogWarning("Upgrade slug '" + slug + "' not found");
+			return false;
+		}
 		return this.upgrades[slug].purchased;
 	}
 
@@ -83,14 +84,12 @@ public class UpgradeManager : MonoBehaviour {
 public class UpgradePurchase {
 	public string name;
 	public string slug;
-	public int id;
 	public int cost;
 	public bool purchased;
 
 	public UpgradePurchase(Upgrade upgrade) {
 		this.name = upgrade.name;
 		this.slug = upgrade.slug;
-		this.id = upgrade.id;
 		this.cost = upgrade.cost;
 		this.purchased = false;
 	}

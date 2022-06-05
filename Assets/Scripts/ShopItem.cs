@@ -28,6 +28,9 @@ public class ShopItem : MonoBehaviour {
 
 	private void Update() {
 		this.button.interactable = GameManager.instance.goldResource.amountHeld >= this.upgradePurchase.cost;
+		if (UpgradeManager.instance.upgrades[this.upgradePurchase.slug].purchased) {
+			Destroy(this.gameObject);
+		}
 	}
 
 	#endregion
@@ -41,8 +44,25 @@ public class ShopItem : MonoBehaviour {
 
 	public void PurchaseItem() {
 		if (GameManager.instance.goldResource.SpendResource(this.upgradePurchase.cost)) {
-			UpgradeManager.instance.upgrades[this.upgradePurchase.slug].purchased = true;
-			Destroy(gameObject);
+			UpgradePurchase upgradePurchase = UpgradeManager.instance.upgrades[this.upgradePurchase.slug];
+			upgradePurchase.purchased = true;
+			switch (upgradePurchase.slug) {
+				case "plot_size_1":
+					GardenManager.instance.UpgradeGardePlotSize(2, 1);
+					break;
+				case "plot_size_2":
+					GardenManager.instance.UpgradeGardePlotSize(2, 2);
+					break;
+				case "plot_size_3":
+					GardenManager.instance.UpgradeGardePlotSize(3, 2);
+					break;
+				case "plot_size_4":
+					GardenManager.instance.UpgradeGardePlotSize(3, 3);
+					break;
+				default:
+					break;
+			}
+			Destroy(this.gameObject);
 		}
 	}
 }

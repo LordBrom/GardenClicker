@@ -18,10 +18,9 @@ public class ShopMenu : HidableMenu {
 
 	protected override void Start() {
 		base.Start();
-
-		foreach (UpgradePurchase upgradePurchase in UpgradeManager.instance.upgrades.Values) {
-			if (!upgradePurchase.purchased) {
-				Instantiate(this.shopItemPrefab, this.shopContainerTransform).GetComponent<ShopItem>().SetUpgradePurchase(upgradePurchase);
+		foreach (string upgradePurchase in UpgradeManager.instance.upgrades.Keys) {
+			if (!UpgradeManager.instance.upgrades[upgradePurchase].purchased) {
+				Instantiate(this.shopItemPrefab, this.shopContainerTransform).GetComponent<ShopItem>().SetUpgradePurchase(UpgradeManager.instance.upgrades[upgradePurchase]);
 			}
 		}
 	}
