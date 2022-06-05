@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Auto Replant
   slug: auto_replant
-  cost: 50
+  cost: 500
   description: After harvest, seeds of the same type will be planted from the inventory.
   requiredUpgrades: []

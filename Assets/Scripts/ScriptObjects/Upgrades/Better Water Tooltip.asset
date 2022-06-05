@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Better Water Tooltip
   slug: water_tooltip
-  cost: 10
+  cost: 150
   description: Shows how long until a plot becomes dry.
   requiredUpgrades:
   - {fileID: 11400000, guid: 8f697810ed4be4846b714516b15bf07c, type: 2}

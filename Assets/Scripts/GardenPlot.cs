@@ -106,7 +106,7 @@ public class GardenPlot : Tooltip {
 		if (this.harvestCount < this.flower.harvestCount) {
 			this.currentGrowthStage = -1;
 			this.flowerGrowth.StartCooldown(this.flower.growTime / 3);
-		} else if (UpgradeManager.instance.HasUpgrade("auto_replant") && InventoryManager.instance.RemoveFromInventory(this.seed, 1)) {
+		} else if (GardenManager.instance.autoReplantActive && InventoryManager.instance.RemoveFromInventory(this.seed, 1)) {
 			this.currentGrowthStage = -1;
 			this.flowerGrowth = new Cooldown(this.flower.growTime);
 		} else {

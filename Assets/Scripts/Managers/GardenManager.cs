@@ -29,9 +29,10 @@ public class GardenManager : MonoBehaviour {
 
 	public bool sprinklerActive;
 	public bool autoHarvestActive;
+	public bool autoReplantActive;
 
 	public Cooldown sprinklerCooldown { get; private set; }
-	private Cooldown autoHarvestCooldown;
+	//private Cooldown autoHarvestCooldown;
 
 	private float sprinklerCooldownTime = 10 * 60;
 
@@ -45,6 +46,10 @@ public class GardenManager : MonoBehaviour {
 	}
 
 	private void Update() {
+		this.sprinklerActive = UpgradeManager.instance.HasUpgrade("sprinkler") && this.sprinklerActive;
+		this.autoHarvestActive = UpgradeManager.instance.HasUpgrade("auto_harvest") && this.autoHarvestActive;
+		this.autoReplantActive = UpgradeManager.instance.HasUpgrade("auto_replant") && this.autoReplantActive;
+
 		if (Input.GetMouseButtonDown(0)) {
 			GardenPlotGridObject clickedPlot = this.gardenPlotGrid.GetGridObject();
 			if (clickedPlot != null) {
@@ -128,10 +133,11 @@ public class GardenManager : MonoBehaviour {
 		}
 	}
 
-	public void LoadOtherSettings(bool sprinklerActive, float sprinklerTime, bool autoHarvestActive) {
+	public void LoadOtherSettings(bool sprinklerActive, float sprinklerTime, bool autoHarvestActive, bool autoReplantActive) {
 		this.sprinklerActive = sprinklerActive;
 		this.sprinklerCooldown.StartCooldown(sprinklerTime);
 		this.autoHarvestActive = autoHarvestActive;
+		this.autoReplantActive = autoReplantActive;
 	}
 
 	#endregion

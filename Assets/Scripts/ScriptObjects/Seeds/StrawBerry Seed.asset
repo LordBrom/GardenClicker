@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: StrawBerry Seed
   slug: strawberry_seed
-  description: Grows greaty sought red fruit.
+  description: Grows greaty sought red fruit. Can be harvested multiple times.
   image: {fileID: 21300000, guid: bd7a58821f4b1c24e812a0c593c96c72, type: 3}
   type: 0
   sellValue: 100

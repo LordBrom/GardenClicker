@@ -11,6 +11,7 @@ public static class SaveLoad {
 		saveState.sprinklerActive = GardenManager.instance.sprinklerActive;
 		saveState.sprinklerTime = GardenManager.instance.sprinklerCooldown.currentCooldown;
 		saveState.autoHarvestActive = GardenManager.instance.autoHarvestActive;
+		saveState.autoReplantActive = GardenManager.instance.autoReplantActive;
 
 		PlayerPrefs.SetString("saveState", JsonUtility.ToJson(saveState));
 	}
@@ -30,7 +31,7 @@ public static class SaveLoad {
 		InventoryManager.instance.LoadSaveString(saveState.InventorySaveState);
 		GardenManager.instance.LoadSaveString(saveState.GardenPlotSaveState);
 		GameManager.instance.goldResource.SetResource(saveState.gold);
-		GardenManager.instance.LoadOtherSettings(saveState.sprinklerActive, saveState.sprinklerTime, saveState.autoHarvestActive);
+		GardenManager.instance.LoadOtherSettings(saveState.sprinklerActive, saveState.sprinklerTime, saveState.autoHarvestActive, saveState.autoReplantActive);
 	}
 
 }
@@ -44,5 +45,6 @@ public class SaveState {
 	public bool sprinklerActive = false;
 	public float sprinklerTime = 0;
 	public bool autoHarvestActive = false;
+	public bool autoReplantActive = false;
 
 }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Faster Sprinkler 1
   slug: fast_sprinkler_1
-  cost: 0
+  cost: 500
   description: The plots get watered twice as often.
   requiredUpgrades:
   - {fileID: 11400000, guid: f8715cb56fd026a47bb5ffe37cbe60c9, type: 2}

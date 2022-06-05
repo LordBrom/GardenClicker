@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Spungy Dirt
   slug: spungy_dirt_1
-  cost: 250
+  cost: 65
   description: Better dirt that stays wet longer.
   requiredUpgrades:
   - {fileID: 11400000, guid: 8f697810ed4be4846b714516b15bf07c, type: 2}

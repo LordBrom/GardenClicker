@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Plot Size 1
   slug: plot_size_1
-  cost: 100
+  cost: 50
   description: Adds another garden plot
   requiredUpgrades: []
