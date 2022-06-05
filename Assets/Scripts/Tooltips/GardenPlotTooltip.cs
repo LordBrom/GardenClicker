@@ -29,7 +29,13 @@ public class GardenPlotTooltip : HidableMenu {
 			this.nameText.text = gardenPlot.flower.name;
 			this.growthTimeText.text = Formatter.TimeFormat(gardenPlot.flowerGrowth.GetRemainingTime());
 		}
-		this.wateredText.text = gardenPlot.isWatered ? "Yes" : "No";
+		if (!gardenPlot.isWatered) {
+			this.wateredText.text = "No";
+		} else if (UpgradeManager.instance.HasUpgrade("water_tooltip")) {
+			this.wateredText.text = Formatter.TimeFormat(gardenPlot.wateredCooldown.GetRemainingTime());
+		} else {
+			this.wateredText.text = "Yes";
+		}
 		this.ShowMenu();
 	}
 	public void ClearTooltip() {

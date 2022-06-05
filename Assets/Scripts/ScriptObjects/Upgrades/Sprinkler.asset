@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Sprinkler
   slug: sprinkler
-  cost: 0
+  cost: 100
+  description: Automatically sprinkles water on all the plots. has a cooldown.
+  requiredUpgrades:
+  - {fileID: 11400000, guid: 8f697810ed4be4846b714516b15bf07c, type: 2}

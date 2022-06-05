@@ -52,7 +52,7 @@ MonoBehaviour:
   dryDirtSprite: {fileID: 21300000, guid: 809f85c8a03b1ef488ef6521fe370ef7, type: 3}
   wetDirtSprite: {fileID: 21300000, guid: 792ffb99e087e404585703746855b25b, type: 3}
   flowerSpriteRenderer: {fileID: 3067824801030233856}
-  waterDuration: 10
+  waterDuration: 30
 --- !u!212 &-3963881595468225689
 SpriteRenderer:
   m_ObjectHideFlags: 0

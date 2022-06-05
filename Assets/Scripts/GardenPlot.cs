@@ -1,6 +1,5 @@
 using UnityEngine;
 using NateMills.UnityUtility;
-using UnityEngine.EventSystems;
 
 public class GardenPlot : Tooltip {
 
@@ -26,10 +25,12 @@ public class GardenPlot : Tooltip {
 	public bool isWatered { get; private set; }
 	public Cooldown wateredCooldown { get; private set; } = new Cooldown(0);
 	[SerializeField]
-	private float waterDuration;
+	private float waterDuration = 60f;
 
 	public Cooldown flowerGrowth { get; private set; } = new Cooldown(0);
 	private int currentGrowthStage;
+
+	public int harvestCount;
 
 	#endregion
 	#region Unity Methods
@@ -44,14 +45,15 @@ public class GardenPlot : Tooltip {
 
 	}
 
-	private void Update() {
+	protected override void Update() {
+		base.Update();
 		if (this.isWatered && this.wateredCooldown.TickCooldown(Time.deltaTime)) {
 			this.spriteRenderer.sprite = this.dryDirtSprite;
 			this.isWatered = false;
 		}
 
 		if (this.flower != null) {
-			this.tooltipText = this.flower.name + " (" + Mathf.FloorToInt(this.flowerGrowth.PercentComplete(false)) + "%)";
+			//this.tooltipText = this.flower.name + " (" + Mathf.FloorToInt(this.flowerGrowth.PercentComplete(false)) + "%)";
 			this.flowerGrowth.tickMultiplier = this.isWatered ? 2 : 1;
 			if (this.flowerGrowth.TickCooldown(Time.deltaTime) && GardenManager.instance.autoHarvestActive) {
 				this.HarvestPlot();
@@ -69,6 +71,14 @@ public class GardenPlot : Tooltip {
 
 	#endregion
 
+	private void SetSeed(Seed seed) {
+		this.flower = seed.flower;
+		this.seed = seed;
+		this.currentGrowthStage = -1;
+		this.flowerGrowth = new Cooldown(this.flower.growTime);
+		this.harvestCount = 0;
+	}
+
 	public void SetGridObject(GardenPlotGridObject gridObject, Vector3 worldPosition) {
 		this.gridObject = gridObject;
 		this.transform.position = worldPosition;
@@ -76,10 +86,7 @@ public class GardenPlot : Tooltip {
 
 	public void PlantSeed(Seed seed) {
 		if (this.flower == null && InventoryManager.instance.RemoveFromInventory(seed, 1)) {
-			this.flower = seed.flower;
-			this.seed = seed;
-			this.currentGrowthStage = -1;
-			this.flowerGrowth = new Cooldown(this.flower.growTime);
+			this.SetSeed(seed);
 		}
 	}
 
@@ -95,8 +102,11 @@ public class GardenPlot : Tooltip {
 				InventoryManager.instance.AddToInventory(harvestDrop.item, dropCount);
 			}
 		}
-
-		if (UpgradeManager.instance.HasUpgrade("auto_replant") && InventoryManager.instance.RemoveFromInventory(this.seed, 1)) {
+		this.harvestCount++;
+		if (this.harvestCount < this.flower.harvestCount) {
+			this.currentGrowthStage = -1;
+			this.flowerGrowth.StartCooldown(this.flower.growTime / 3);
+		} else if (UpgradeManager.instance.HasUpgrade("auto_replant") && InventoryManager.instance.RemoveFromInventory(this.seed, 1)) {
 			this.currentGrowthStage = -1;
 			this.flowerGrowth = new Cooldown(this.flower.growTime);
 		} else {
@@ -109,7 +119,7 @@ public class GardenPlot : Tooltip {
 			return;
 		}
 		this.isWatered = true;
-		this.wateredCooldown.StartCooldown();
+		this.wateredCooldown.StartCooldown(this.waterDuration * (UpgradeManager.instance.HasUpgrade("spungy_dirt_1") ? 2 : 1));
 		this.spriteRenderer.sprite = this.wetDirtSprite;
 	}
 
@@ -126,16 +136,16 @@ public class GardenPlot : Tooltip {
 	public override void ShowTooltip() {
 		TooltipManager.instance.SetGardenPlotTooltip(this);
 	}
+	public override void UpdateToolTip() {
+		TooltipManager.instance.SetGardenPlotTooltip(this);
+	}
 
 	public void LoadPlot(string seedSlug, float growthAmount, float waterAmount) {
 		if (seedSlug != "") {
 			Item seedItem = GameManager.itemLookUp[seedSlug];
 			if (seedItem.type == Item.Type.Seed) {
 				Seed seed = (Seed)seedItem;
-				this.flower = seed.flower;
-				this.seed = seed;
-				this.currentGrowthStage = -1;
-				this.flowerGrowth = new Cooldown(this.flower.growTime);
+				this.SetSeed(seed);
 				this.flowerGrowth.StartCooldown(growthAmount);
 			}
 		}

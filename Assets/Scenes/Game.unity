@@ -2489,6 +2489,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8d05f5148d42720438620b3a17716844, type: 2}
   - {fileID: 11400000, guid: 6a7d4926833a1e246a8e127cdadb6af7, type: 2}
   - {fileID: 11400000, guid: aa1fcdfab79fdbd40a1a04e8d18fb760, type: 2}
+  - {fileID: 11400000, guid: 4f440e030e4c76b4e9e6831755a9931b, type: 2}
   upgrades:
   - {fileID: 11400000, guid: 8f697810ed4be4846b714516b15bf07c, type: 2}
   - {fileID: 11400000, guid: 69203f2871afa1247b507dd013394346, type: 2}
@@ -2500,6 +2501,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a858b58b0c85c5845aa4438af89dd0b2, type: 2}
   - {fileID: 11400000, guid: 28f08859e6c0b784ab97d0124349603d, type: 2}
   - {fileID: 11400000, guid: f8715cb56fd026a47bb5ffe37cbe60c9, type: 2}
+  - {fileID: 11400000, guid: 3e42fcd438fa5fe46ac398c21f39b90e, type: 2}
+  - {fileID: 11400000, guid: d19d99afc04c5344980fd07b0120faf8, type: 2}
+  - {fileID: 11400000, guid: f5beb2ff12791b34fb5e2a7e63e2b524, type: 2}
   goldText: {fileID: 724975384}
 --- !u!4 &1243547184
 Transform:

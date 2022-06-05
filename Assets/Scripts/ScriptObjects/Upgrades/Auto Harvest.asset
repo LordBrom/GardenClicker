@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Auto Harvest
   slug: auto_harvest
-  cost: 0
+  cost: 500
+  description: Crops will be automatically harvested when ready.
+  requiredUpgrades: []

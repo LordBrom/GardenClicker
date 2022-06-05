@@ -54,10 +54,11 @@ public class ShopMenu : HidableMenu {
 		}
 		this.renderedShopItems.Clear();
 
-		foreach (string upgradePurchase in UpgradeManager.instance.upgrades.Keys) {
-			if (!UpgradeManager.instance.upgrades[upgradePurchase].purchased) {
+		foreach (string upgradeSlug in UpgradeManager.instance.upgrades.Keys) {
+			UpgradePurchase upgradePurchase = UpgradeManager.instance.upgrades[upgradeSlug];
+			if (!upgradePurchase.purchased && upgradePurchase.IsAvailable()) {
 				GameObject newShopItem = Instantiate(this.shopItemPrefab, this.shopContainerTransform);
-				newShopItem.GetComponent<ShopItem>().SetUpgradePurchase(UpgradeManager.instance.upgrades[upgradePurchase]);
+				newShopItem.GetComponent<ShopItem>().SetUpgradePurchase(upgradePurchase);
 				this.renderedShopItems.Add(newShopItem);
 			}
 		}

@@ -21,12 +21,12 @@ public class CameraController : MonoBehaviour {
 
 		Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - (Input.mouseScrollDelta.y * scrollSpeed), minScroll, maxScroll);
 
-		if (Input.GetMouseButtonDown(2)) {
+		if (Input.GetMouseButtonDown(1)) {
 			dragOrigin = Input.mousePosition;
 			return;
 		}
 
-		if (!Input.GetMouseButton(2)) {
+		if (!Input.GetMouseButton(1)) {
 			return;
 		}
 

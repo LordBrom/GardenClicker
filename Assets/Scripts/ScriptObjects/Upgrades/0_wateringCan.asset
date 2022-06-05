@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Watering Can
   slug: water_can
-  id: 0
   cost: 10
+  description: Used to water your crops. Watered plots grow faster.
+  requiredUpgrades: []

@@ -85,13 +85,26 @@ public class UpgradePurchase {
 	public string name;
 	public string slug;
 	public int cost;
+	public string description;
 	public bool purchased;
+	public Upgrade[] requiredUpgrades;
 
 	public UpgradePurchase(Upgrade upgrade) {
 		this.name = upgrade.name;
 		this.slug = upgrade.slug;
 		this.cost = upgrade.cost;
+		this.description = upgrade.description;
+		this.requiredUpgrades = upgrade.requiredUpgrades;
 		this.purchased = false;
+	}
+
+	public bool IsAvailable() {
+		foreach (Upgrade upgrade in this.requiredUpgrades) {
+			if (!UpgradeManager.instance.HasUpgrade(upgrade.slug)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 }

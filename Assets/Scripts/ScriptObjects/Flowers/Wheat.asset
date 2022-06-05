@@ -19,14 +19,17 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 23d9cc2b43487bd4aaab2c1a9e52715a, type: 3}
   - {fileID: 21300000, guid: e8ab28067cb0deb4ebbbfb5c98ec501e, type: 3}
   - {fileID: 21300000, guid: 0b946d4d240bc8f479e10e6cd7c8f05f, type: 3}
-  growTime: 600
+  growTime: 180
   harvestDrops:
   - item: {fileID: 11400000, guid: e86b1ad627258e9408c02eea14c0b29e, type: 2}
     dropChance: 100
     dropCount: {x: 1, y: 1}
   - item: {fileID: 11400000, guid: aa1fcdfab79fdbd40a1a04e8d18fb760, type: 2}
     dropChance: 100
-    dropCount: {x: 1, y: 1}
+    dropCount: {x: 2, y: 4}
+  - item: {fileID: 11400000, guid: aa1fcdfab79fdbd40a1a04e8d18fb760, type: 2}
+    dropChance: 100
+    dropCount: {x: 1, y: 4}
   - item: {fileID: 11400000, guid: e86b1ad627258e9408c02eea14c0b29e, type: 2}
     dropChance: 50
     dropCount: {x: 1, y: 5}

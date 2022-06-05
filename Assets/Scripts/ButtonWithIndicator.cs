@@ -14,7 +14,8 @@ public class ButtonWithIndicator : Tooltip {
 	#endregion
 	#region Unity Methods
 
-	protected virtual void Update() {
+	protected override void Update() {
+		base.Update();
 		activeIndicatorObject.SetActive(this.ActiveCondition());
 	}
 

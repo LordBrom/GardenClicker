@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca81bb99f026b884aa0167364e24507a, type: 3}
-  m_Name: Plot Size 3
+  m_Name: Faster Sprinkler 2
   m_EditorClassIdentifier: 
-  name: Plot Size 3
-  slug: plot_size_3
-  cost: 500
-  description: Adds 2 garden plots. wow!
+  name: Faster Sprinkler 2
+  slug: fast_sprinkler_2
+  cost: 0
+  description: The plots get watered twice as often.
   requiredUpgrades:
-  - {fileID: 11400000, guid: ab6d7d840e19c13408ebdc6a86a9ca52, type: 2}
+  - {fileID: 11400000, guid: 74236b04cb8b34c4cbeabba37b5bbdd3, type: 2}

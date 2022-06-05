@@ -10,6 +10,8 @@ public class Flower : ScriptableObject {
 	public float growTime;
 
 	public HarvestDrop[] harvestDrops;
+
+	public int harvestCount = 1;
 }
 
 [System.Serializable]

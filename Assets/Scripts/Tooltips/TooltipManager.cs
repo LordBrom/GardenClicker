@@ -109,6 +109,12 @@ public class Tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler 
 
 	#endregion
 
+	protected virtual void Update() {
+		if (this.isHovering) {
+			this.UpdateToolTip();
+		}
+	}
+
 	public bool isHovering { get; private set; }
 
 	public void OnPointerEnter(PointerEventData eventData) {
@@ -137,5 +143,9 @@ public class Tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler 
 
 	public virtual void HideTooltip() {
 		TooltipManager.instance.ClearHoverTooltip();
+	}
+
+	public virtual void UpdateToolTip() {
+
 	}
 }

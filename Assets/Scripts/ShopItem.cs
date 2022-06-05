@@ -6,10 +6,10 @@ public class ShopItem : MonoBehaviour {
 
 	#region Inspector Assignments
 
-	//[SerializeField]
-	//private Image itemImage;
 	[SerializeField]
 	private TextMeshProUGUI itemName;
+	[SerializeField]
+	private TextMeshProUGUI itemDescription;
 	[SerializeField]
 	private TextMeshProUGUI itemCost;
 
@@ -37,8 +37,8 @@ public class ShopItem : MonoBehaviour {
 
 	public void SetUpgradePurchase(UpgradePurchase upgradePurchase) {
 		this.upgradePurchase = upgradePurchase;
-		//this.itemImage = null;
 		this.itemName.text = upgradePurchase.name;
+		this.itemDescription.text = upgradePurchase.description;
 		this.itemCost.text = upgradePurchase.cost.ToString();
 	}
 
@@ -63,7 +63,6 @@ public class ShopItem : MonoBehaviour {
 					break;
 			}
 			ShopMenu.instance.PopulateShopItems();
-			//Destroy(this.gameObject);
 		}
 	}
 }

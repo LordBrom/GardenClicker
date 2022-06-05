@@ -17,4 +17,4 @@ MonoBehaviour:
   description: A slimy squermy wormy
   image: {fileID: 21300000, guid: 87208e81058cdbb489b5323d8d72a77c, type: 3}
   type: 1
-  sellValue: 5
+  sellValue: 15

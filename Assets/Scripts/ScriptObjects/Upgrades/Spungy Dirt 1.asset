@@ -10,8 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca81bb99f026b884aa0167364e24507a, type: 3}
-  m_Name: Faster Sprinkler
+  m_Name: Spungy Dirt 1
   m_EditorClassIdentifier: 
-  name: Faster Sprinkler 2
-  slug: fast_sprinkler_2
-  cost: 0
+  name: Spungy Dirt
+  slug: spungy_dirt_1
+  cost: 250
+  description: Better dirt that stays wet longer.
+  requiredUpgrades:
+  - {fileID: 11400000, guid: 8f697810ed4be4846b714516b15bf07c, type: 2}

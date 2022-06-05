@@ -14,17 +14,15 @@ public class Sprinkler : ButtonWithIndicator {
 		GetComponent<Unlockable>().Condition = this.UnlockCondition;
 	}
 
-	protected override void Update() {
-		base.Update();
-		if (this.isHovering) {
-			TooltipManager.instance.SetToolTip("Sprinklers: " + (!this.ActiveCondition() ? "On" : "Off") + "\nnext sprinkle: " + Formatter.TimeFormat(GardenManager.instance.sprinklerCooldown.currentCooldown));
-		}
-	}
 
 	#endregion
 
 	public void HandleSprinklerButton() {
 		GardenManager.instance.sprinklerActive = !GardenManager.instance.sprinklerActive;
+	}
+
+	public override void UpdateToolTip() {
+		TooltipManager.instance.SetToolTip("Sprinklers: " + (!this.ActiveCondition() ? "On" : "Off") + "\nnext sprinkle: " + Formatter.TimeFormat(GardenManager.instance.sprinklerCooldown.GetRemainingTime()));
 	}
 
 	protected override bool ActiveCondition() {

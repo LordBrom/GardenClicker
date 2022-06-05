@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Plot Size 4
   slug: plot_size_4
-  id: 5
   cost: 1000
+  description: Adds 3 garden plots. Amazing!
+  requiredUpgrades:
+  - {fileID: 11400000, guid: a858b58b0c85c5845aa4438af89dd0b2, type: 2}

@@ -18,9 +18,10 @@ public class SaveButton : Tooltip {
 
 	}
 
-	private void Update() {
+	protected override void Update() {
+		base.Update();
 		if (this.isHovering) {
-			TooltipManager.instance.SetToolTip("Click to save (Auto saves in " + Formatter.TimeFormat(this.autoSaveCooldown.currentCooldown) + ")");
+			TooltipManager.instance.SetToolTip("Click to save (Auto saves in " + Formatter.TimeFormat(this.autoSaveCooldown.GetRemainingTime()) + ")");
 		}
 
 		if (this.autoSaveCooldown.TickCooldown(Time.deltaTime)) {
