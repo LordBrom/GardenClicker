@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ResetGameButton : Tooltip {
 
@@ -21,5 +22,6 @@ public class ResetGameButton : Tooltip {
 	public void HandleResetGameButton() {
 		SaveLoad.LoadState(true);
 		SaveLoad.SaveState();
+		SceneManager.LoadScene(0);
 	}
 }
