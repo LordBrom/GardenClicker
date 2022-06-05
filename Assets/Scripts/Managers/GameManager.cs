@@ -60,9 +60,6 @@ public class GameManager : MonoBehaviour {
 	private void Start() {
 		this.goldResource = new Resource("Gold");
 		SaveLoad.LoadState();
-		InventoryManager.instance.AddToInventory(GameManager.itemLookUp["strawberry_seed"], 1);
-		InventoryManager.instance.AddToInventory(GameManager.itemLookUp["wheat_seed"], 1);
-		this.goldResource.GainResource(10000);
 	}
 
 	private void Update() {

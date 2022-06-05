@@ -8,8 +8,11 @@ public static class SaveLoad {
 		saveState.InventorySaveState = InventoryManager.instance.GetSaveString();
 		saveState.GardenPlotSaveState = GardenManager.instance.GetSaveString();
 		saveState.gold = GameManager.instance.goldResource.amountHeld;
+		saveState.sprinklerActive = GardenManager.instance.sprinklerActive;
+		saveState.sprinklerTime = GardenManager.instance.sprinklerCooldown.currentCooldown;
+		saveState.autoHarvestActive = GardenManager.instance.autoHarvestActive;
+
 		PlayerPrefs.SetString("saveState", JsonUtility.ToJson(saveState));
-		//Debug.Log("Game Saved");
 	}
 
 	public static void LoadState(bool loadNewGame = false) {
@@ -27,6 +30,7 @@ public static class SaveLoad {
 		InventoryManager.instance.LoadSaveString(saveState.InventorySaveState);
 		GardenManager.instance.LoadSaveString(saveState.GardenPlotSaveState);
 		GameManager.instance.goldResource.SetResource(saveState.gold);
+		GardenManager.instance.LoadOtherSettings(saveState.sprinklerActive, saveState.sprinklerTime, saveState.autoHarvestActive);
 	}
 
 }
@@ -37,5 +41,8 @@ public class SaveState {
 	public string InventorySaveState = "";
 	public string GardenPlotSaveState = "";
 	public int gold = 0;
+	public bool sprinklerActive = false;
+	public float sprinklerTime = 0;
+	public bool autoHarvestActive = false;
 
 }

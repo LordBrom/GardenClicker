@@ -128,6 +128,12 @@ public class GardenManager : MonoBehaviour {
 		}
 	}
 
+	public void LoadOtherSettings(bool sprinklerActive, float sprinklerTime, bool autoHarvestActive) {
+		this.sprinklerActive = sprinklerActive;
+		this.sprinklerCooldown.StartCooldown(sprinklerTime);
+		this.autoHarvestActive = autoHarvestActive;
+	}
+
 	#endregion
 
 	private void BuildGardenPlots(int width = 1, int height = 1) {
