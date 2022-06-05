@@ -55,6 +55,9 @@ public class GardenManager : MonoBehaviour {
 					case GameManager.CurserMode.Seed:
 						clickedPlot.gardenPlot.PlantSeed(GameManager.instance.activeSeed);
 						break;
+					case GameManager.CurserMode.Clear:
+						clickedPlot.gardenPlot.ClearFlower();
+						break;
 					default:
 						clickedPlot.gardenPlot.HandleClick();
 						break;

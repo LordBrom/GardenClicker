@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Grass
   growthSprites:
-  - {fileID: 21300000, guid: 89cad337acdfc50469a45a72700a605c, type: 3}
-  - {fileID: 21300000, guid: 754763725fe968845b59b5a2456728a3, type: 3}
-  - {fileID: 21300000, guid: 3c095a6b70f481845a1305697593daa0, type: 3}
-  - {fileID: 21300000, guid: 56c0d465819ae68409edec689cc683e4, type: 3}
+  - {fileID: 21300000, guid: 51cf2736751ba6f46a809bfa54723771, type: 3}
+  - {fileID: 21300000, guid: c579d61d6bc299a4db41497261fd52f1, type: 3}
+  - {fileID: 21300000, guid: 4383dc71f6004f5429f5fc8557acee75, type: 3}
+  - {fileID: 21300000, guid: c21694030fdce864280509aedf41837e, type: 3}
   growTime: 60
   harvestDrops:
   - item: {fileID: 11400000, guid: 33a8ef228e483db4bb30bf55c4e2f3c0, type: 2}
@@ -32,3 +32,4 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: 33a8ef228e483db4bb30bf55c4e2f3c0, type: 2}
     dropChance: 25
     dropCount: {x: 1, y: 2}
+  harvestCount: 1

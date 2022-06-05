@@ -14,11 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Wheat
   growthSprites:
-  - {fileID: 21300000, guid: c8582b9f962216247a93361197121b1d, type: 3}
-  - {fileID: 21300000, guid: 74db69e099efdd14cbf10eb626923ef8, type: 3}
-  - {fileID: 21300000, guid: 23d9cc2b43487bd4aaab2c1a9e52715a, type: 3}
-  - {fileID: 21300000, guid: e8ab28067cb0deb4ebbbfb5c98ec501e, type: 3}
-  - {fileID: 21300000, guid: 0b946d4d240bc8f479e10e6cd7c8f05f, type: 3}
+  - {fileID: 21300000, guid: 51cf2736751ba6f46a809bfa54723771, type: 3}
+  - {fileID: 21300000, guid: 71d7e658d6b48f347aad04d6d04df8fc, type: 3}
+  - {fileID: 21300000, guid: 02b85f9dddffb4c4c94e50100076252e, type: 3}
+  - {fileID: 21300000, guid: f5eb722b18b6e304a906b4ab8bddef79, type: 3}
   growTime: 180
   harvestDrops:
   - item: {fileID: 11400000, guid: e86b1ad627258e9408c02eea14c0b29e, type: 2}
@@ -33,3 +32,4 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: e86b1ad627258e9408c02eea14c0b29e, type: 2}
     dropChance: 50
     dropCount: {x: 1, y: 5}
+  harvestCount: 1
