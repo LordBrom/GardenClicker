@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
 
+namespace NateMills.UnityUtility {
 
-namespace NateMills.UnityUtils {
 	public class Grid<TGridObject> {
 		#region Variables
 
@@ -12,6 +12,7 @@ namespace NateMills.UnityUtils {
 		protected Vector3 originPosition;
 		protected TGridObject[,] gridArray;
 		protected TextMesh[,] debugTextArray;
+		protected Vector3 cellOffset;
 
 		public bool showDebug = false;
 
@@ -27,19 +28,18 @@ namespace NateMills.UnityUtils {
 			this.width = width;
 			this.height = height;
 			this.cellSize = cellSize;
+			this.cellOffset = new Vector3(this.cellSize, this.cellSize) * 0.5f;
 			this.originPosition = originPosition;
 			this.showDebug = debug;
 
-			gridArray = new TGridObject[width, height];
-			for (int x = 0; x < gridArray.GetLength(0); x++) {
-				for (int y = 0; y < gridArray.GetLength(1); y++) {
-					gridArray[x, y] = createGridObject(this, x, y);
+			this.gridArray = new TGridObject[width, height];
+			for (int x = 0; x < this.gridArray.GetLength(0); x++) {
+				for (int y = 0; y < this.gridArray.GetLength(1); y++) {
+					this.gridArray[x, y] = createGridObject(this, x, y);
 				}
 			}
 
-			if (showDebug) {
-				this.DrawDebug();
-			}
+			if (showDebug) { this.DrawDebug(); }
 		}
 
 		private void DrawDebug() {
@@ -51,7 +51,7 @@ namespace NateMills.UnityUtils {
 					GameObject gameObject = new GameObject(x + "_" + y, typeof(TextMesh));
 					Transform transform = gameObject.transform;
 					transform.SetParent(debugContainer.transform);
-					transform.localPosition = GetWorldPosition(x, y) + new Vector3(this.cellSize, this.cellSize) * 0.5f;
+					transform.localPosition = GetWorldPosition(x, y, true);
 					TextMesh textMesh = gameObject.GetComponent<TextMesh>();
 					textMesh.text = gridArray[x, y]?.ToString();
 					textMesh.color = Color.white;
@@ -84,8 +84,8 @@ namespace NateMills.UnityUtils {
 		public Vector3 GetOriginPosition() {
 			return this.originPosition;
 		}
-		public Vector3 GetWorldPosition(int x, int y) {
-			return new Vector3(x, y) * this.cellSize + this.originPosition;
+		public Vector3 GetWorldPosition(int x, int y, bool includeCellOffset = false) {
+			return new Vector3(x, y) * this.cellSize + this.originPosition + (includeCellOffset ? this.cellOffset : Vector3.zero);
 		}
 
 		public void GetXY(Vector3 worldPosition, out int x, out int y) {
@@ -105,6 +105,11 @@ namespace NateMills.UnityUtils {
 		public bool OnGrid(Vector3 worldPosition) {
 			GetXY(worldPosition, out int x, out int y);
 			return OnGrid(x, y);
+		}
+
+		public TGridObject GetGridObject() {
+			GetXY(out int x, out int y);
+			return GetGridObject(x, y);
 		}
 
 		public TGridObject GetGridObject(int x, int y) {
@@ -169,4 +174,6 @@ namespace NateMills.UnityUtils {
 			}
 		}
 	}
+
+
 }

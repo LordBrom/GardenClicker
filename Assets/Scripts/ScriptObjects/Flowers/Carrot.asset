@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf86618ed10f03743b451144cb4fdacf, type: 3}
+  m_Name: Carrot
+  m_EditorClassIdentifier: 
+  name: Carrot
+  growthSprites:
+  - {fileID: 21300000, guid: 51cf2736751ba6f46a809bfa54723771, type: 3}
+  - {fileID: 21300000, guid: 80c522d2ce721584fb2335d709b01886, type: 3}
+  - {fileID: 21300000, guid: 993a476e852dfa445a14c68c959b7b30, type: 3}
+  growTime: 30
+  harvestDrops:
+  - item: {fileID: 11400000, guid: f5bd07156b568494e9645f88ba71e0b4, type: 2}
+    dropChance: 100
+    dropCount: {x: 1, y: 1}
+  - item: {fileID: 11400000, guid: 8b57c12de869e574db4cc2a69ea61ef0, type: 2}
+    dropChance: 100
+    dropCount: {x: 10, y: 50}
+  - item: {fileID: 11400000, guid: 090cb4c02e643a64c93f6476efec4d40, type: 2}
+    dropChance: 0.01
+    dropCount: {x: 1, y: 1}
+  harvestCount: 1

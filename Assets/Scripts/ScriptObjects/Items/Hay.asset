@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a93f5442d6a144a9583980034bd60f, type: 3}
+  m_Name: Hay
+  m_EditorClassIdentifier: 
+  name: Hay
+  slug: hay
+  description: Hay, it's for horses!
+  image: {fileID: 21300000, guid: 8c2d2b241b8f00e4fb0304eee6de63fe, type: 3}
+  type: 1
+  sellValue: 15

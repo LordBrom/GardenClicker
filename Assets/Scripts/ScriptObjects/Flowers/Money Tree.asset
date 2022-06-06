@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf86618ed10f03743b451144cb4fdacf, type: 3}
+  m_Name: Money Tree
+  m_EditorClassIdentifier: 
+  name: Money Tree
+  growthSprites:
+  - {fileID: 21300000, guid: 51cf2736751ba6f46a809bfa54723771, type: 3}
+  - {fileID: 21300000, guid: 962a5a4c4bb05f443b9865b0293daeee, type: 3}
+  - {fileID: 21300000, guid: 4231b52817ba05a429fe39772f54a94f, type: 3}
+  - {fileID: 21300000, guid: 4ebcaa797fd3f2c4faf3876243d0aba5, type: 3}
+  - {fileID: 21300000, guid: 21b0988da97ba004c8c24c90dbb82d17, type: 3}
+  - {fileID: 21300000, guid: 8dc94264cd340754c91ac7a31ab2b779, type: 3}
+  - {fileID: 21300000, guid: 63f52d0607dca6045a93e35d1f18cc5a, type: 3}
+  growTime: 1200
+  harvestDrops:
+  - item: {fileID: 11400000, guid: 090cb4c02e643a64c93f6476efec4d40, type: 2}
+    dropChance: 100
+    dropCount: {x: 1, y: 1}
+  - item: {fileID: 11400000, guid: 94d190386c066af4485a60d29d631ed5, type: 2}
+    dropChance: 100
+    dropCount: {x: 100, y: 200}
+  - item: {fileID: 11400000, guid: 090cb4c02e643a64c93f6476efec4d40, type: 2}
+    dropChance: 0.1
+    dropCount: {x: 1, y: 1}
+  harvestCount: 1

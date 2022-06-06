@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf86618ed10f03743b451144cb4fdacf, type: 3}
+  m_Name: Sunflower
+  m_EditorClassIdentifier: 
+  name: Sunflower
+  growthSprites:
+  - {fileID: 21300000, guid: 51cf2736751ba6f46a809bfa54723771, type: 3}
+  - {fileID: 21300000, guid: dad4364df0782e343ad2499315149a27, type: 3}
+  - {fileID: 21300000, guid: 6953017af3c63a04fa7c0eec071b54ee, type: 3}
+  - {fileID: 21300000, guid: 8f5f500e14e8a1840ad1d078ba0dae0d, type: 3}
+  - {fileID: 21300000, guid: d8e6f82eebe01c649830ac8d71e45b47, type: 3}
+  growTime: 600
+  harvestDrops:
+  - item: {fileID: 11400000, guid: e5cf29c7b3910d4449c7f979d964dfdf, type: 2}
+    dropChance: 100
+    dropCount: {x: 1, y: 1}
+  - item: {fileID: 11400000, guid: 881fc1f9761b2544c8ba7e3ea8f6799d, type: 2}
+    dropChance: 100
+    dropCount: {x: 1, y: 1}
+  - item: {fileID: 11400000, guid: e5cf29c7b3910d4449c7f979d964dfdf, type: 2}
+    dropChance: 100
+    dropCount: {x: 50, y: 500}
+  - item: {fileID: 11400000, guid: 090cb4c02e643a64c93f6476efec4d40, type: 2}
+    dropChance: 0.01
+    dropCount: {x: 1, y: 1}
+  harvestCount: 1
