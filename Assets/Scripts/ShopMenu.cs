@@ -64,7 +64,7 @@ public class ShopMenu : HidableMenu {
 		}
 
 		foreach (Item item in GameManager.itemLookUp.Values) {
-			if (item.type == Item.Type.Seed) {
+			if (item.inShop) {
 				GameObject newShopItem = Instantiate(this.shopItemPrefab, this.shopContainerTransform);
 				newShopItem.GetComponent<ShopItem>().SetItem(item);
 				this.renderedShopItems.Add(newShopItem);

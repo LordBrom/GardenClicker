@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2911a4af7a910fa41adcfabce89a20da, type: 3}
-  m_Name: Wheat Seed
+  m_Name: Money Seed
   m_EditorClassIdentifier: 
-  name: Wheat Seeds
-  slug: wheat_seed
-  description: Seeds to grow some basic animal feed.
-  image: {fileID: 21300000, guid: 2a5b8c668a9ff384697e2cb23af785b7, type: 3}
+  name: Money Seed
+  slug: money_seed
+  description: Whoa, maybe money does grow on trees!
+  image: {fileID: 21300000, guid: 26de93394e187874795d18520b93d86d, type: 3}
   type: 0
-  sellValue: 10
-  inShop: 1
-  flower: {fileID: 11400000, guid: 0059577b42ffb084b88697711703978f, type: 2}
+  sellValue: 100
+  flower: {fileID: 11400000, guid: 2f47c27873428bb4ca5204b39029f8fd, type: 2}

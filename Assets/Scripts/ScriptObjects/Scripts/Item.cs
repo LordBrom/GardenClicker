@@ -15,6 +15,8 @@ public class Item : ScriptableObject {
 
 	public int sellValue;
 
+	public bool inShop;
+
 	public enum Type {
 		Seed,
 		Product

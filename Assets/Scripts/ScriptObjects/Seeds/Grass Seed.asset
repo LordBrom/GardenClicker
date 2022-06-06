@@ -17,5 +17,6 @@ MonoBehaviour:
   description: A basic seed to grow some turf.
   image: {fileID: 21300000, guid: 239eab7b6aa40784cb0aa488c0a80fae, type: 3}
   type: 0
-  sellValue: 1
+  sellValue: 5
+  inShop: 1
   flower: {fileID: 11400000, guid: 795397492a9986047856d35af453a37f, type: 2}

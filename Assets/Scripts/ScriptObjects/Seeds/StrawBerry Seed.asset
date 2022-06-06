@@ -17,5 +17,6 @@ MonoBehaviour:
   description: Grows greaty sought red fruit. Can be harvested multiple times.
   image: {fileID: 21300000, guid: 83102c97db2df784bb0be2f05cad9793, type: 3}
   type: 0
-  sellValue: 10
+  sellValue: 20
+  inShop: 1
   flower: {fileID: 11400000, guid: a0e9885aca3b3974790a41bb485f265a, type: 2}

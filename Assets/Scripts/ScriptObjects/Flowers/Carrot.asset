@@ -25,4 +25,7 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: 8b57c12de869e574db4cc2a69ea61ef0, type: 2}
     dropChance: 100
     dropCount: {x: 10, y: 50}
+  - item: {fileID: 11400000, guid: 090cb4c02e643a64c93f6476efec4d40, type: 2}
+    dropChance: 0.01
+    dropCount: {x: 1, y: 1}
   harvestCount: 1
